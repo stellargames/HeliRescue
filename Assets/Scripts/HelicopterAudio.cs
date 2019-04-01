@@ -19,4 +19,9 @@ public class HelicopterAudio : MonoBehaviour
     {
         _audioSource.pitch = 1 + _helicopterController.Throttle * pitchMultiplier;
     }
+
+    private void OnDisable()
+    {
+        _audioSource.Stop();
+    }
 }
