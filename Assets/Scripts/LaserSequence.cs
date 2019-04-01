@@ -2,7 +2,7 @@
 
 public class LaserSequence : MonoBehaviour
 {
-    [SerializeField] private GameObject[] laserBeams = null;
+    [SerializeField] private LaserBeam[] laserBeams = null;
     [SerializeField] private float intervalSeconds = 3f;
     [SerializeField] private int modulo = 2;
 
@@ -19,7 +19,7 @@ public class LaserSequence : MonoBehaviour
     {
         for (int i = 0; i < laserBeams.Length; i++)
         {
-            laserBeams[i].SetActive((i + _currentIndex) % modulo == 0);
+            laserBeams[i].SetBeamStatus((i + _currentIndex) % modulo == 0);
         }
     }
 
