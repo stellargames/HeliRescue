@@ -1,32 +1,41 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using TMPro;
+﻿using System;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class HelicopterController : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed = 30f;
-    [SerializeField] private float rotateSpeed = 3f;
-    [SerializeField] private float liftForce = 30f;
+    [SerializeField] private float moveSpeed = 1000f;
+    [SerializeField] private float rotateSpeed = 4f;
+    [SerializeField] private float liftForce = 1000f;
 
     private Rigidbody2D _rigidBody2D;
+    private float _rotateForce;
+    private Vector2 _appliedForce;
+
+    public float Throttle => Math.Abs(_appliedForce.x) + _appliedForce.y;
 
     private void Awake()
     {
         _rigidBody2D = GetComponent<Rigidbody2D>();
     }
 
-    void Update()
+    private void Update()
     {
         var horizontal = Input.GetAxis("Horizontal");
         var vertical = Input.GetAxis("Vertical");
         var rotation = Input.GetAxis("Rotation");
 
-        var velocity = _rigidBody2D.velocity;
-        var force = new Vector2(horizontal * moveSpeed, vertical * liftForce);
-        _rigidBody2D.AddForce(force - velocity);
+        _appliedForce = new Vector2(horizontal * moveSpeed * Time.deltaTime,
+            vertical * liftForce * Time.deltaTime);
+        _rotateForce = rotateSpeed * rotation;
+    }
 
-        var yRotation = transform.rotation.eulerAngles.y + rotateSpeed * rotation;
+    private void FixedUpdate()
+    {
+        var velocity = _rigidBody2D.velocity;
+        _rigidBody2D.AddForce(_appliedForce - velocity);
+
+        var yRotation = transform.rotation.eulerAngles.y + _rotateForce;
         var direction = transform.InverseTransformDirection(velocity);
         transform.rotation =
             Quaternion.Euler(new Vector3(direction.z, yRotation, -direction.x));
