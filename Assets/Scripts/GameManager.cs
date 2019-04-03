@@ -12,7 +12,6 @@ public class GameManager : MonoBehaviour
         _playerSpawnPoint = FindObjectOfType<PlayerSpawnPoint>();
     }
 
-
     private void Start()
     {
         SpawnPlayer();
@@ -20,15 +19,22 @@ public class GameManager : MonoBehaviour
 
     private void OnEnable()
     {
-        HelicopterCollision.HelicopterDestroyed += OnHelicopterDestroyed;
+        HelicopterCollision.Exploded += OnHelicopterExploded;
+        CheckPoint.Reached += CheckPointOnReached;
+    }
+
+    private void CheckPointOnReached(CheckPoint checkpoint)
+    {
+        _playerSpawnPoint.transform.position = checkpoint.transform.position;
     }
 
     private void OnDisable()
     {
-        HelicopterCollision.HelicopterDestroyed -= OnHelicopterDestroyed;
+        CheckPoint.Reached -= CheckPointOnReached;
+        HelicopterCollision.Exploded -= OnHelicopterExploded;
     }
 
-    private void OnHelicopterDestroyed()
+    private void OnHelicopterExploded()
     {
         StartCoroutine(DelayedSpawn());
     }

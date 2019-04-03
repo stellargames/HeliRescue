@@ -5,9 +5,9 @@ using Random = UnityEngine.Random;
 public class HelicopterCollision : MonoBehaviour
 {
     [SerializeField] private DestroyEffect[] explosionPrefabs = null;
-    [SerializeField] private AudioClip[] audioClips;
+    [SerializeField] private AudioClip[] audioClips = null;
 
-    public static event Action HelicopterDestroyed = delegate {  };
+    public static event Action Exploded = delegate {  };
 
     private void OnCollisionEnter2D(Collision2D other)
     {
@@ -25,7 +25,7 @@ public class HelicopterCollision : MonoBehaviour
 
         Destroy(gameObject, 2f);
 
-        HelicopterDestroyed();
+        Exploded();
     }
 
     private static bool IsBottomCollision(Collision2D other)

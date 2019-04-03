@@ -2,7 +2,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class HelicopterController : MonoBehaviour
+public class HelicopterController : MonoBehaviour, IHaveThrottle
 {
     [SerializeField] private float moveSpeed = 1000f;
     [SerializeField] private float rotateSpeed = 4f;
