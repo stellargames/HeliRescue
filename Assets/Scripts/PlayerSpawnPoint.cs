@@ -10,7 +10,21 @@ public class PlayerSpawnPoint : MonoBehaviour
     private void Awake()
     {
         _camera = FindObjectOfType<CinemachineVirtualCamera>();
+    }
 
+    private void OnEnable()
+    {
+        Checkpoint.Reached += CheckPointOnReached;
+    }
+
+    private void OnDisable()
+    {
+        Checkpoint.Reached -= CheckPointOnReached;
+    }
+
+    private void CheckPointOnReached(Checkpoint checkpoint)
+    {
+        transform.position = checkpoint.transform.position;
     }
 
     public void SpawnPlayer()
