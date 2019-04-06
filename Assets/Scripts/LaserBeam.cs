@@ -3,7 +3,6 @@
 public class LaserBeam : MonoBehaviour
 {
     [SerializeField] private GameObject beam = null;
-    [SerializeField] private GameObject turret;
 
     private void Start()
     {
@@ -14,6 +13,5 @@ public class LaserBeam : MonoBehaviour
     {
         beam.SetActive(status);
     }
-
 
 }

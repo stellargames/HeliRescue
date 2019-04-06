@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class ChasingEnemy : MonoBehaviour, IReset
+public class ChasingEnemy : MonoBehaviour
 {
     private bool _activated;
     [SerializeField] private float fadeTime = 2f;
@@ -46,9 +46,4 @@ public class ChasingEnemy : MonoBehaviour, IReset
         }
     }
 
-    public void Reset()
-    {
-        _activated = false;
-
-    }
 }

@@ -1,6 +1,4 @@
-﻿using System.Linq;
-using UnityEngine;
-using UnityEngine.Assertions;
+﻿using UnityEngine;
 
 public class CheckpointManager : MonoBehaviour
 {
@@ -11,10 +9,4 @@ public class CheckpointManager : MonoBehaviour
         _checkpoints = GetComponentsInChildren<Checkpoint>();
     }
 
-    public Checkpoint GetLastActivatedCheckpoint()
-    {
-        var lastCheckpoint = _checkpoints.LastOrDefault(t => t.Activated);
-        Assert.IsNotNull(lastCheckpoint, "There needs to be at least one passed checkpoint.");
-        return lastCheckpoint;
-    }
 }

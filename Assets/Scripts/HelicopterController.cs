@@ -11,18 +11,13 @@ public class HelicopterController : MonoBehaviour, IHaveThrottle
 
     private Rigidbody2D _rigidBody2D;
     private float _rotateForce;
-    private Vector2 _appliedForce;
+    private Vector2 _throttleForce;
 
-    public float Throttle => Math.Abs(_appliedForce.x) + _appliedForce.y;
+    public float Throttle => Math.Abs(_throttleForce.x) + _throttleForce.y;
 
     private void Awake()
     {
         _rigidBody2D = GetComponent<Rigidbody2D>();
-    }
-
-    private void OnDestroy()
-    {
-        Debug.Log("HelicopterController OnDestroy");
     }
 
     private void Update()
@@ -31,19 +26,20 @@ public class HelicopterController : MonoBehaviour, IHaveThrottle
         var vertical = Input.GetAxis("Vertical");
         var rotation = Input.GetAxis("Rotation");
 
-        _appliedForce = new Vector2(horizontal * moveSpeed * Time.deltaTime,
-            vertical * liftForce * Time.deltaTime);
+        var horizontalForce = horizontal * moveSpeed * Time.deltaTime;
+        var verticalForce = vertical * liftForce * Time.deltaTime;
+        _throttleForce = new Vector2(horizontalForce,verticalForce);
         _rotateForce = rotateSpeed * rotation;
     }
 
     private void FixedUpdate()
     {
         var velocity = _rigidBody2D.velocity;
-        _rigidBody2D.AddForce(_appliedForce - velocity);
+        _rigidBody2D.AddForce(_throttleForce - velocity);
 
         var yRotation = transform.rotation.eulerAngles.y + _rotateForce;
         var direction = transform.InverseTransformDirection(velocity);
-        transform.rotation =
-            Quaternion.Euler(new Vector3(direction.z, yRotation, -direction.x));
+        var rotateDegrees = new Vector3(direction.z, yRotation, -direction.x);
+        transform.rotation = Quaternion.Euler(rotateDegrees);
     }
 }

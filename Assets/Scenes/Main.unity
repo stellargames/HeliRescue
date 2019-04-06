@@ -88636,6 +88636,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 973399612}
+  - component: {fileID: 973399613}
   m_Layer: 0
   m_Name: Checkpoints
   m_TagString: Untagged
@@ -88659,6 +88660,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &973399613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 973399611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11fc514102f24e045a2275c57a399bcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1186504175 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8508926373664001743, guid: 6fce541cd98ec914fa632577fc3f2570,
@@ -88907,7 +88920,7 @@ PrefabInstance:
     - target: {fileID: 6313663455919447322, guid: 43125d886098d594d90764e7c115df32,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.377121
+      value: -3.75
       objectReference: {fileID: 0}
     - target: {fileID: 6313663455919447322, guid: 43125d886098d594d90764e7c115df32,
         type: 3}
@@ -89010,6 +89023,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 7380071079719671971, guid: a61824fb15c8f9947a12f94c8ee10267,
     type: 3}
+  virtualCamera: {fileID: 1282639566}
 --- !u!4 &1895053195
 Transform:
   m_ObjectHideFlags: 0

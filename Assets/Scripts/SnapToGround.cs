@@ -14,16 +14,15 @@ public class SnapToGround : MonoBehaviour
             layerMask = LayerMask.GetMask("Default");
         }
 
-        var position = new Vector2(transform.position.x, transform.position.y);
+        var t = transform;
+        var p = t.position;
+        t.rotation = Quaternion.identity;
 
-
-        transform.rotation = Quaternion.identity;
-
-        var hitInfo = Physics2D.Raycast(position, Vector2.down, distance, layerMask);
+        var origin = new Vector2(p.x, p.y);
+        var hitInfo = Physics2D.Raycast(origin, Vector2.down, distance, layerMask);
         if (hitInfo)
         {
-            transform.position = new Vector3(transform.position.x, hitInfo.point.y,
-                transform.position.z);
+            transform.position = new Vector3(p.x, hitInfo.point.y, p.z);
         }
     }
 }

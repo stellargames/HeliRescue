@@ -22,26 +22,31 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+            Debug.Log("GameManager Awake");
         }
     }
 
     private void Start()
     {
+        Debug.Log("GameManager Start");
         SpawnPlayer();
     }
 
     private void OnEnable()
     {
+        Debug.Log("GameManager OnEnable");
         HelicopterCollision.Exploded += OnHelicopterExploded;
     }
 
     private void OnDisable()
     {
+        Debug.Log("GameManager OnDisable");
         HelicopterCollision.Exploded -= OnHelicopterExploded;
     }
 
     private void OnHelicopterExploded()
     {
+        Debug.Log("GameManager HelicopterExploded");
         StartCoroutine(DelayedSpawn());
     }
 
@@ -49,7 +54,7 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(spawnDelay);
         yield return SceneManager.LoadSceneAsync(0);
-        SpawnPlayer();
+        Start();
     }
 
     private void SpawnPlayer()

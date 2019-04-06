@@ -5,30 +5,35 @@ using Random = UnityEngine.Random;
 public class HelicopterCollision : MonoBehaviour
 {
     [SerializeField] private DestroyEffect[] explosionPrefabs = null;
+
     [SerializeField] private AudioClip[] audioClips = null;
 
-    public static event Action Exploded = delegate {  };
+    public static event Action Exploded = delegate { };
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (IsBottomCollision(other)) return;
+        if (IsLandingGearCollision(other) && !IsEnemy(other.gameObject)) return;
 
         var explosion = explosionPrefabs[Random.Range(0, explosionPrefabs.Length - 1)];
         Instantiate(explosion, transform.position, Quaternion.identity);
-
-        DisableComponents();
-        DisableChildren();
-
-        GetComponent<Collider2D>().enabled = false;
-
         PlayExplosionAudio();
 
+        GetComponent<HelicopterController>().enabled = false;
+        GetComponent<EngineAudio>().enabled = false;
+        GetComponent<Collider2D>().enabled = false;
+
+        DisableChildren();
         Destroy(gameObject, 2f);
 
         Exploded.Invoke();
     }
 
-    private static bool IsBottomCollision(Collision2D other)
+    private static bool IsEnemy(GameObject gameObject)
+    {
+        return gameObject.CompareTag("Enemy");
+    }
+
+    private static bool IsLandingGearCollision(Collision2D other)
     {
         var contactNormal = other.GetContact(0).normal;
 //        Debug.Log("Other: " + other.gameObject.name);
@@ -41,16 +46,7 @@ public class HelicopterCollision : MonoBehaviour
         var audioSource = GetComponent<AudioSource>();
         if (!audioSource || audioClips.Length == 0) return;
 
-        audioSource.enabled = true;
         audioSource.PlayOneShot(audioClips[Random.Range(0, audioClips.Length - 1)]);
-    }
-
-    private void DisableComponents()
-    {
-        foreach (var component in gameObject.GetComponents<MonoBehaviour>())
-        {
-            component.enabled = false;
-        }
     }
 
     private void DisableChildren()
