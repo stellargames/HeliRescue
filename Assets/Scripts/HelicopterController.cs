@@ -1,4 +1,5 @@
 ﻿using System;
+using Interfaces;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -17,6 +18,11 @@ public class HelicopterController : MonoBehaviour, IHaveThrottle
     private void Awake()
     {
         _rigidBody2D = GetComponent<Rigidbody2D>();
+    }
+
+    private void OnDestroy()
+    {
+        Debug.Log("HelicopterController OnDestroy");
     }
 
     private void Update()

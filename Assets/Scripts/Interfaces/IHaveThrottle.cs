@@ -1,4 +1,7 @@
-public interface IHaveThrottle
+namespace Interfaces
 {
-    float Throttle { get; }
+    public interface IHaveThrottle
+    {
+        float Throttle { get; }
+    }
 }

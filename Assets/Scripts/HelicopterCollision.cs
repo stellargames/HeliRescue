@@ -25,7 +25,7 @@ public class HelicopterCollision : MonoBehaviour
 
         Destroy(gameObject, 2f);
 
-        Exploded();
+        Exploded.Invoke();
     }
 
     private static bool IsBottomCollision(Collision2D other)
