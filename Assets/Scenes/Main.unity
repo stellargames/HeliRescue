@@ -88333,13 +88333,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 763632677}
-  - component: {fileID: 763632676}
-  - component: {fileID: 763632675}
   - component: {fileID: 763632674}
   - component: {fileID: 763632673}
+  - component: {fileID: 763632675}
   m_Layer: 0
   m_Name: Skull
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -88372,60 +88371,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5654f8eb438418f43b329288ce8ef686, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeTime: 2
---- !u!70 &763632675
-CapsuleCollider2D:
+  chaseSpeed: 0.05
+  fadeSpeed: 0.5
+  body: {fileID: 904290242}
+--- !u!50 &763632675
+Rigidbody2D:
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 763632672}
-  m_Enabled: 1
-  m_Density: 1
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.06}
-  m_Size: {x: 7.52, y: 5.59}
-  m_Direction: 1
---- !u!1839735485 &763632676
-Tilemap:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 763632672}
-  m_Enabled: 1
-  m_Tiles: {}
-  m_AnimatedTiles: {}
-  m_TileAssetArray: []
-  m_TileSpriteArray: []
-  m_TileMatrixArray: []
-  m_TileColorArray: []
-  m_AnimationFrameRate: 1
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Origin: {x: 0, y: 0, z: 0}
-  m_Size: {x: 0, y: 0, z: 1}
-  m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
-  m_TileOrientation: 0
-  m_TileOrientationMatrix:
-    e00: 1
-    e01: 0
-    e02: 0
-    e03: 0
-    e10: 0
-    e11: 1
-    e12: 0
-    e13: 0
-    e20: 0
-    e21: 0
-    e22: 1
-    e23: 0
-    e30: 0
-    e31: 0
-    e32: 0
-    e33: 1
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!4 &763632677
 Transform:
   m_ObjectHideFlags: 0
@@ -88451,8 +88420,9 @@ GameObject:
   m_Component:
   - component: {fileID: 904290242}
   - component: {fileID: 904290241}
+  - component: {fileID: 904290243}
   m_Layer: 0
-  m_Name: Skull Visual
+  m_Name: Skull Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -88520,6 +88490,22 @@ Transform:
   m_Father: {fileID: 763632677}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!70 &904290243
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 904290240}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.06}
+  m_Size: {x: 8.66, y: 6.82}
+  m_Direction: 1
 --- !u!4 &933394705 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8508926373664001743, guid: 6fce541cd98ec914fa632577fc3f2570,
