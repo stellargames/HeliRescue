@@ -1,18 +1,18 @@
 ﻿using System;
-using System.Collections;
+using Persistence;
 using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
 [RequireComponent(typeof(ParticleSystem))]
 public class Checkpoint : MonoBehaviour
 {
-    [SerializeField] private float blinkTimer = 1.5f;
+    [SerializeField] private float blinkDelay = 1.5f;
     [SerializeField] private GameObject blinkLight = null;
 
-    public bool Activated { get; private set; }
-
+    private bool _activated;
     private ParticleSystem _particle;
     private AudioSource _audioSource;
+    private float _blinkTimer;
 
     public static event Action<Checkpoint> Reached = delegate(Checkpoint point) { };
 
@@ -23,9 +23,21 @@ public class Checkpoint : MonoBehaviour
         blinkLight.SetActive(false);
     }
 
+    private void Update()
+    {
+        if (!_activated) return;
+
+        _blinkTimer += Time.deltaTime;
+        if (_blinkTimer > blinkDelay)
+        {
+            blinkLight.SetActive(!blinkLight.activeSelf);
+            _blinkTimer = 0;
+        }
+    }
+
     private void OnCollisionEnter2D(Collision2D other1)
     {
-        if (!Activated)
+        if (!_activated)
         {
             Activate();
         }
@@ -35,17 +47,17 @@ public class Checkpoint : MonoBehaviour
     {
         _particle.Play();
         _audioSource.Play();
-        Activated = true;
+        _activated = true;
         Reached(this);
-        StartCoroutine(BlinkLight());
     }
 
-    private IEnumerator BlinkLight()
+    public void Load(GameDataReader reader)
     {
-        while (true)
-        {
-            yield return new WaitForSeconds(blinkTimer);
-            blinkLight.SetActive(!blinkLight.activeSelf);
-        }
+        _activated = reader.ReadBool();
+    }
+
+    public void Save(GameDataWriter writer)
+    {
+        writer.Write(_activated);
     }
 }

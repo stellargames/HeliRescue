@@ -1,4 +1,5 @@
 ﻿using Cinemachine;
+using Persistence;
 using UnityEngine;
 
 public class PlayerSpawnPoint : MonoBehaviour
@@ -28,4 +29,13 @@ public class PlayerSpawnPoint : MonoBehaviour
         virtualCamera.m_LookAt = player.transform;
     }
 
+    public void Save(GameDataWriter writer)
+    {
+        writer.Write(transform.position);
+    }
+
+    public void Load(GameDataReader reader)
+    {
+        transform.position = reader.ReadVector3();
+    }
 }
