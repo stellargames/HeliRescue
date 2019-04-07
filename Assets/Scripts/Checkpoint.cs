@@ -6,6 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(ParticleSystem))]
 public class Checkpoint : MonoBehaviour
 {
+    [SerializeField] private float minimumTimeBetweenLandings = 5f;
     [SerializeField] private float blinkDelay = 1.5f;
     [SerializeField] private GameObject blinkLight = null;
 
@@ -13,6 +14,7 @@ public class Checkpoint : MonoBehaviour
     private ParticleSystem _particle;
     private AudioSource _audioSource;
     private float _blinkTimer;
+    private float _busyTimer;
 
     public static event Action<Checkpoint> Reached = delegate(Checkpoint point) { };
 
@@ -20,6 +22,7 @@ public class Checkpoint : MonoBehaviour
     {
         _audioSource = GetComponent<AudioSource>();
         _particle = GetComponent<ParticleSystem>();
+        _busyTimer = minimumTimeBetweenLandings;
         blinkLight.SetActive(false);
     }
 
@@ -33,14 +36,25 @@ public class Checkpoint : MonoBehaviour
             blinkLight.SetActive(!blinkLight.activeSelf);
             _blinkTimer = 0;
         }
+
+        if (_busyTimer > 0f)
+        {
+            _busyTimer -= Time.deltaTime;
+        }
     }
 
-    private void OnCollisionEnter2D(Collision2D other1)
+    private void OnCollisionEnter2D(Collision2D other)
     {
-        if (!_activated)
-        {
-            Activate();
-        }
+        if (_busyTimer > 0f) return;
+        if (!other.gameObject.CompareTag("Player")) return;
+
+        Activate();
+        Reached.Invoke(this);
+    }
+
+    private void OnCollisionExit2D(Collision2D other)
+    {
+        _busyTimer = minimumTimeBetweenLandings;
     }
 
     private void Activate()
@@ -48,7 +62,6 @@ public class Checkpoint : MonoBehaviour
         _particle.Play();
         _audioSource.Play();
         _activated = true;
-        Reached(this);
     }
 
     public void Load(GameDataReader reader)

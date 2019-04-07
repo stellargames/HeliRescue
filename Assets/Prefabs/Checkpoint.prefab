@@ -50,7 +50,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35945e0fc5f51d4459b36df31ec4c33d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blinkTimer: 1.5
+  minimumTimeBetweenLandings: 10
+  blinkDelay: 1.5
   blinkLight: {fileID: 6313663455978738826}
 --- !u!114 &6313663455919447316
 MonoBehaviour:

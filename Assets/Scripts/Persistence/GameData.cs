@@ -25,7 +25,7 @@ namespace Persistence
             {
                 return;
             }
-
+            Debug.Log("GameData Load");
             using (var binaryReader = new BinaryReader(File.OpenRead(_saveFilePath)))
             {
                 var reader = new GameDataReader(binaryReader, -binaryReader.ReadInt32());
@@ -36,6 +36,7 @@ namespace Persistence
 
         public void Save()
         {
+            Debug.Log("GameData Save");
             using (var binaryWriter = new BinaryWriter(File.OpenWrite(_saveFilePath)))
             {
                 var writer = new GameDataWriter(binaryWriter);

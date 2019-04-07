@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private float spawnDelay = 3f;
 
-    public static GameManager Instance { get; private set; }
+    private static GameManager Instance { get; set; }
 
     private int _loadedLevelBuildIndex;
     private string _saveFile;
@@ -61,6 +61,7 @@ public class GameManager : MonoBehaviour
 
     private void CheckpointOnReached(Checkpoint checkpoint)
     {
+        _gameData.PlayerSpawnPoint.MoveTo(checkpoint.transform.position);
         _gameData.Save();
     }
 
