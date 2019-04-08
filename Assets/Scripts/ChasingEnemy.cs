@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using UnityEngine;
-using UnityEngine.Assertions;
 
 [RequireComponent(typeof(CircleCollider2D))]
 public class ChasingEnemy : MonoBehaviour
@@ -15,9 +14,10 @@ public class ChasingEnemy : MonoBehaviour
     private void Awake()
     {
         SetChildrenActive(false);
-        Assert.IsNotNull(body,
-            $"Please assign a body to the ChasingEnemy {gameObject.name}");
-        _fader = body.GetComponent<Fader>();
+        if (body != null)
+        {
+            _fader = body.GetComponent<Fader>();
+        }
     }
 
     private void Update()
@@ -63,13 +63,13 @@ public class ChasingEnemy : MonoBehaviour
     {
         _activated = true;
         SetChildrenActive(true);
-        _fader.StartFadeIn();
+        if (_fader) _fader.StartFadeIn();
     }
 
     private IEnumerator Deactivate()
     {
         _activated = false;
-        yield return _fader.FadeOut();
+        if (_fader) yield return _fader.FadeOut();
         SetChildrenActive(false);
     }
 
