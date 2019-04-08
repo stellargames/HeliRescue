@@ -6,19 +6,18 @@ using UnityEngine.Assertions;
 public class ChasingEnemy : MonoBehaviour
 {
     [SerializeField] private float chaseSpeed = 0.05f;
-    [SerializeField] private float fadeSpeed = 0.5f;
     [SerializeField] private Transform body = null;
 
     private bool _activated;
     private Transform _currentTarget;
-    private Coroutine _currentFadeRoutine;
+    private Fader _fader;
 
     private void Awake()
     {
         SetChildrenActive(false);
         Assert.IsNotNull(body,
             $"Please assign a body to the ChasingEnemy {gameObject.name}");
-        body.localScale = Vector3.zero;
+        _fader = body.GetComponent<Fader>();
     }
 
     private void Update()
@@ -64,37 +63,14 @@ public class ChasingEnemy : MonoBehaviour
     {
         _activated = true;
         SetChildrenActive(true);
-        _currentFadeRoutine = StartCoroutine(FadeBodyIn());
+        _fader.StartFadeIn();
     }
 
     private IEnumerator Deactivate()
     {
         _activated = false;
-        if (_currentFadeRoutine != null) StopCoroutine(_currentFadeRoutine);
-        yield return FadeBodyOut();
+        yield return _fader.FadeOut();
         SetChildrenActive(false);
-    }
-
-    private IEnumerator FadeBodyIn()
-    {
-        var currentScale = body.transform.localScale;
-        while (currentScale.sqrMagnitude < 3f)
-        {
-            currentScale += Time.deltaTime * fadeSpeed * Vector3.one;
-            body.transform.localScale = currentScale;
-            yield return null;
-        }
-    }
-
-    private IEnumerator FadeBodyOut()
-    {
-        var currentScale = body.transform.localScale;
-        while (currentScale.sqrMagnitude > 0.1f)
-        {
-            currentScale -= Time.deltaTime * fadeSpeed * Vector3.one;
-            body.transform.localScale = currentScale;
-            yield return null;
-        }
     }
 
     private void SetChildrenActive(bool value)

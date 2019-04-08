@@ -88358,7 +88358,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 10
+  m_Radius: 20
 --- !u!114 &763632674
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -88372,7 +88372,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaseSpeed: 0.05
-  fadeSpeed: 0.5
   body: {fileID: 904290242}
 --- !u!50 &763632675
 Rigidbody2D:
@@ -88403,7 +88402,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 763632672}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -87.8, y: 94.1, z: 0}
+  m_LocalPosition: {x: -92.9, y: 109, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 904290242}
@@ -88421,6 +88420,7 @@ GameObject:
   - component: {fileID: 904290242}
   - component: {fileID: 904290241}
   - component: {fileID: 904290243}
+  - component: {fileID: 904290244}
   m_Layer: 0
   m_Name: Skull Body
   m_TagString: Untagged
@@ -88506,6 +88506,19 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: -0.06}
   m_Size: {x: 8.66, y: 6.82}
   m_Direction: 1
+--- !u!114 &904290244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 904290240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d44e644575d69064a9c4bc9a9bdaa390, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeSpeed: 0.5
 --- !u!4 &933394705 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8508926373664001743, guid: 6fce541cd98ec914fa632577fc3f2570,
