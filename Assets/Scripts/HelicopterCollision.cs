@@ -5,7 +5,6 @@ using Random = UnityEngine.Random;
 public class HelicopterCollision : MonoBehaviour
 {
     [SerializeField] private DestroyEffect[] explosionPrefabs = null;
-
     [SerializeField] private AudioClip[] audioClips = null;
 
     public static event Action Exploded = delegate { };
