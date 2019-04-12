@@ -13,7 +13,7 @@ public class HelicopterCollision : MonoBehaviour
     {
         if (IsLandingGearCollision(other) && !IsEnemy(other.gameObject)) return;
 
-        var explosion = explosionPrefabs[Random.Range(0, explosionPrefabs.Length - 1)];
+        var explosion = explosionPrefabs[Random.Range(0, explosionPrefabs.Length)];
         Instantiate(explosion, transform.position, Quaternion.identity);
         PlayExplosionAudio();
 
@@ -45,7 +45,7 @@ public class HelicopterCollision : MonoBehaviour
         var audioSource = GetComponent<AudioSource>();
         if (!audioSource || audioClips.Length == 0) return;
 
-        audioSource.PlayOneShot(audioClips[Random.Range(0, audioClips.Length - 1)]);
+        audioSource.PlayOneShot(audioClips[Random.Range(0, audioClips.Length)]);
     }
 
     private void DisableChildren()

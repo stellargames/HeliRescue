@@ -25,18 +25,31 @@ public class Missile : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other)
     {
         var contact = other.GetContact(0);
-        var explosion = explosionPrefabs[Random.Range(0, explosionPrefabs.Length - 1)];
-        var explosionInstance = Instantiate(explosion, contact.point, Quaternion.identity);
+
+        InstantiateExplosionPrefab(contact);
+        PlayExplosionAudio();
+
+        var delay = 64f / contact.relativeVelocity.sqrMagnitude;
+        StartCoroutine(DelayedDestroy(delay));
+    }
+
+    private void InstantiateExplosionPrefab(ContactPoint2D contact)
+    {
+        var explosionPrefab = explosionPrefabs[Random.Range(0, explosionPrefabs.Length)];
+        Debug.Log(explosionPrefab.name);
+        var explosionInstance =
+            Instantiate(explosionPrefab, contact.point, Quaternion.identity);
         var explosionTransform = explosionInstance.transform;
         explosionTransform.up = contact.normal;
         explosionTransform.position += Vector3.back;
+    }
 
-        PlayExplosionAudio();
+    private void PlayExplosionAudio()
+    {
+        var audioSource = GetComponent<AudioSource>();
+        if (!audioSource || audioClips.Length == 0) return;
 
-
-        var delay = 50f / contact.relativeVelocity.sqrMagnitude;
-        Debug.Log(gameObject.name + delay);
-        StartCoroutine(DelayedDestroy(delay));
+        audioSource.PlayOneShot(audioClips[Random.Range(0, audioClips.Length)]);
     }
 
     private IEnumerator DelayedDestroy(float delay)
@@ -46,14 +59,5 @@ public class Missile : MonoBehaviour
         yield return new WaitForSeconds(delay);
         exhaust.Stop(true, ParticleSystemStopBehavior.StopEmitting);
         Destroy(gameObject, 3f);
-    }
-
-
-    private void PlayExplosionAudio()
-    {
-        var audioSource = GetComponent<AudioSource>();
-        if (!audioSource || audioClips.Length == 0) return;
-
-        audioSource.PlayOneShot(audioClips[Random.Range(0, audioClips.Length - 1)]);
     }
 }

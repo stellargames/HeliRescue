@@ -4750,6 +4750,8 @@ MonoBehaviour:
   exhaust: {fileID: 3421026641791663229}
   explosionPrefabs:
   - {fileID: 11400002, guid: e076683e0305e35498b8e8834978c0fa, type: 3}
+  - {fileID: 11400004, guid: 875c9bcb71a8d7f46a64a8a7df5987e0, type: 3}
+  - {fileID: 11400008, guid: 337943813ac55274db17d9c4dfcaf5ea, type: 3}
   audioClips:
   - {fileID: 8300000, guid: a4ad7afec065309459afbe5dbc57010d, type: 3}
   - {fileID: 8300000, guid: c604aefe41bedc642b0e6e941a882baf, type: 3}
