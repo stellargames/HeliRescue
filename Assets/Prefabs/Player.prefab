@@ -339,6 +339,8 @@ MonoBehaviour:
   moveSpeed: 1000
   rotateSpeed: 4
   liftForce: 1000
+  missilePrefab: {fileID: 3421026640380133216, guid: b245d6446fe8fde4f890bfe413b99fce,
+    type: 3}
 --- !u!114 &7380071079719671974
 MonoBehaviour:
   m_ObjectHideFlags: 0

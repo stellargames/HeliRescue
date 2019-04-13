@@ -1,0 +1,10 @@
+- Fuel
+- Ammo
+- Moving lasers
+- Variable length lasers
+- pooling system
+    - explosions
+    - missiles
+- controllers
+- mobile control
+- rear rotor loss

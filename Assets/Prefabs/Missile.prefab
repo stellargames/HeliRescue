@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3421026641791663231}
   - component: {fileID: 3421026641791663229}
   - component: {fileID: 3421026641791663230}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Missile Exhaust
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4710,7 +4710,7 @@ GameObject:
   - component: {fileID: 3421026640380133216}
   - component: {fileID: 3421026640380133223}
   - component: {fileID: 1385165207}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Missile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4803,7 +4803,7 @@ GameObject:
   - component: {fileID: 1890352504765821224}
   - component: {fileID: 6168402867467227347}
   - component: {fileID: 7524963975016936824}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Missile Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
