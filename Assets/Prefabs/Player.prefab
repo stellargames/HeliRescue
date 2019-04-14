@@ -336,11 +336,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d13adafd7511da4fa16f5671e47c386, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 1000
-  rotateSpeed: 4
   liftForce: 1000
   missilePrefab: {fileID: 3421026640380133216, guid: b245d6446fe8fde4f890bfe413b99fce,
     type: 3}
+  moveSpeed: 1000
+  rotateSpeed: 4
 --- !u!114 &7380071079719671974
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -419,7 +419,8 @@ AudioSource:
   m_GameObject: {fileID: 7380071079719671971}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 243607191233324722, guid: e360ef1dbb1450843bb9247d42ee6b4a,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: cf32ef82184225d4e8217b7c9a357bb6, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1

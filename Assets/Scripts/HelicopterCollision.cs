@@ -4,8 +4,8 @@ using Random = UnityEngine.Random;
 
 public class HelicopterCollision : MonoBehaviour
 {
-    [SerializeField] private DestroyEffect[] explosionPrefabs = null;
-    [SerializeField] private AudioClip[] audioClips = null;
+    [SerializeField] private AudioClip[] audioClips;
+    [SerializeField] private DestroyEffect[] explosionPrefabs;
 
     public static event Action Exploded = delegate { };
 
@@ -18,7 +18,6 @@ public class HelicopterCollision : MonoBehaviour
         PlayExplosionAudio();
 
         GetComponent<HelicopterController>().enabled = false;
-        GetComponent<EngineAudio>().enabled = false;
         GetComponent<Collider2D>().enabled = false;
 
         DisableChildren();
@@ -44,6 +43,7 @@ public class HelicopterCollision : MonoBehaviour
     {
         var audioSource = GetComponent<AudioSource>();
         if (!audioSource || audioClips.Length == 0) return;
+        audioSource.Stop();
 
         audioSource.PlayOneShot(audioClips[Random.Range(0, audioClips.Length)]);
     }
@@ -51,8 +51,6 @@ public class HelicopterCollision : MonoBehaviour
     private void DisableChildren()
     {
         for (var i = 0; i < transform.childCount; i++)
-        {
             transform.GetChild(i).gameObject.SetActive(false);
-        }
     }
 }

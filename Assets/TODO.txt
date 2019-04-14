@@ -5,6 +5,7 @@
 - pooling system
     - explosions
     - missiles
-- controllers
++ controllers
 - mobile control
 - rear rotor loss
+- refine heli collider, separate landing gear

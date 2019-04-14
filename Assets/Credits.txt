@@ -1,0 +1,55 @@
+UNITY TECHNOLOGIES  Unity Particle Pack
+https://assetstore.unity.com/packages/essentials/tutorial-projects/unity-particle-pack-127325
+- Missile exhaust
+    Assets/Models/Missile/Textures/smokeysteam.tif
+    Assets/Models/Missile/Materials/SmokeySteam01.mat
+
+3DYNAMITE   Mobile Missiles Pack
+https://assetstore.unity.com/packages/3d/props/weapons/mobile-missiles-pack-71890
+- Missiles
+    Assets/Models/Missile/Textures/Missiles_Pack_dif.tga
+    Assets/Models/Missile/Materials/Missiles_Pack.mat
+    Assets/Models/Missile/Missile.fbx
+
+GAPH    Fx Explosion Pack
+https://assetstore.unity.com/packages/vfx/particles/fire-explosions/fx-explosion-pack-30102
+- Explosions
+    Assets/Fx Explosion Pack/*
+
+SOUND EXCEPTIONAL   Helicopters
+https://assetstore.unity.com/packages/audio/sound-fx/transportation/helicopters-115476
+- Helicopter blades
+    Assets/Audio/hover blade thwop.wav
+    Assets/Audio/hover, blade thwop.wav
+
+GAMEDEVJON, INC.    Dungeon Escape
+https://assetstore.unity.com/packages/3d/characters/dungeon-escape-119390
+- Cave tiles
+    Assets/Sprites/Environmental_SpritesV2.png
+    Assets/Assets/Sprites/Tiles/Environmental_Tiles/Bricks/Bricks.png
+
+Unity-Technologies  2d-extras
+https://github.com/Unity-Technologies/2d-extras
+- Tilemap plugin
+    Assets/Plugins/Tilemap/*
+
+DUANE'S MIND    Military Helicopter II
+https://assetstore.unity.com/packages/3d/vehicles/air/military-helicopter-ii-9472
+- Helicopter model
+    Assets/Models/Helicopter/*
+
+Skull And Crossbones
+https://www.publicdomainpictures.net/en/view-image.php?image=130392&picture=skull-and-crossbones
+- Skull
+    Assets/Sprites/skull-and-crossbones-1443450010JTF.jpg
+
+???
+http://www.tonysalvaggio.com/wp-content/uploads/2014/04/Laser_Red_Thick_512.png
+- Laser beams
+    Assets/Sprites/Laser_Red_Thick_512.png
+
+xenoargh    Speed-Painting Spacecraft
+http://fractalsoftworks.com/forum/index.php?topic=6360.0
+- Laser turrets
+    Assets/Sprites/Turret.png
+
