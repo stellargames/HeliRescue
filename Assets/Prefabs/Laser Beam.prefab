@@ -268,4 +268,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   beam: {fileID: 2749360544779286266}
-  turret: {fileID: 0}

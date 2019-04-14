@@ -50,7 +50,9 @@ public class HelicopterController : MonoBehaviour, IHaveThrottle
         var direction =
             new Vector3(noseDirection.x, noseDirection.y + noseDirection.z, 0);
         var missileInstance =
-            Instantiate(missilePrefab, transform.position, Quaternion.identity);
+            missilePrefab.Get<Missile>(transform.position,
+                Quaternion.identity);
+//            Instantiate(missilePrefab, transform.position, Quaternion.identity);
         missileInstance.transform.right = direction;
         var missileBody = missileInstance.GetComponent<Rigidbody2D>();
         missileBody.AddForce(_rigidBody2D.velocity * 0.5f, ForceMode2D.Impulse);

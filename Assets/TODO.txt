@@ -9,3 +9,4 @@
 - mobile control
 - rear rotor loss
 - refine heli collider, separate landing gear
+- enable lighting on cave sprites

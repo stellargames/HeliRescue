@@ -1,23 +1,32 @@
-﻿using UnityEngine;
+﻿using Pooling;
+using UnityEngine;
 
-public class Missile : MonoBehaviour
+[RequireComponent(typeof(Rigidbody2D))]
+public class Missile : PooledMonoBehaviour
 {
-    private Rigidbody2D _missile;
+    private Rigidbody2D _physicsBody;
     [SerializeField] private AudioClip[] audioClips;
     [SerializeField] private Transform body;
     [SerializeField] private ParticleSystem exhaust;
-    [SerializeField] private DestroyEffect[] explosionPrefabs;
+    [SerializeField] private Explosion[] explosionPrefabs;
     [SerializeField] private float thrust = 20f;
 
     private void Awake()
     {
-        _missile = GetComponent<Rigidbody2D>();
+        _physicsBody = GetComponent<Rigidbody2D>();
+    }
+
+    private void OnEnable()
+    {
+        GetComponent<Collider2D>().enabled = true;
+        body.gameObject.SetActive(true);
+        exhaust.gameObject.SetActive(true);
     }
 
     private void FixedUpdate()
     {
         var direction = transform.right.normalized;
-        _missile.AddForce(direction * thrust, ForceMode2D.Force);
+        _physicsBody.AddForce(direction * thrust, ForceMode2D.Force);
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -30,15 +39,16 @@ public class Missile : MonoBehaviour
         GetComponent<Collider2D>().enabled = false;
         body.gameObject.SetActive(false);
         exhaust.Stop(true, ParticleSystemStopBehavior.StopEmitting);
-        Destroy(gameObject, 3f);
+        ReturnToPool(3f);
     }
 
     private void InstantiateExplosionPrefab(ContactPoint2D contact)
     {
         var explosionPrefab = explosionPrefabs[Random.Range(0, explosionPrefabs.Length)];
         var explosionInstance =
-            Instantiate(explosionPrefab, contact.point, Quaternion.identity);
+            explosionPrefab.Get<Explosion>(contact.point, Quaternion.identity);
         explosionInstance.transform.up = contact.normal;
+        explosionInstance.ReturnToPool(5f);
     }
 
     private void PlayExplosionAudio()

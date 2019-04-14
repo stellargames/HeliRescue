@@ -366,13 +366,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e195f21e5aa8c934faa92375bb2cea58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionPrefabs:
-  - {fileID: 11400002, guid: 6e8c7c425e5bc374daf95a774767b1e3, type: 3}
-  - {fileID: 11400002, guid: bd5a7ae3e8bd4c8499f69e8e45138021, type: 3}
-  - {fileID: 11400002, guid: 82019e923dca94848916b96b8f98a352, type: 3}
   audioClips:
   - {fileID: 8300000, guid: a4ad7afec065309459afbe5dbc57010d, type: 3}
   - {fileID: 8300000, guid: c604aefe41bedc642b0e6e941a882baf, type: 3}
+  explosionPrefabs:
+  - {fileID: 1174506800577713099, guid: 6e8c7c425e5bc374daf95a774767b1e3, type: 3}
+  - {fileID: 4332312331122338369, guid: bd5a7ae3e8bd4c8499f69e8e45138021, type: 3}
+  - {fileID: 2581763768408483960, guid: 82019e923dca94848916b96b8f98a352, type: 3}
 --- !u!50 &7380071079719671972
 Rigidbody2D:
   serializedVersion: 4

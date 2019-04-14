@@ -5,7 +5,7 @@ using Random = UnityEngine.Random;
 public class HelicopterCollision : MonoBehaviour
 {
     [SerializeField] private AudioClip[] audioClips;
-    [SerializeField] private DestroyEffect[] explosionPrefabs;
+    [SerializeField] private Explosion[] explosionPrefabs;
 
     public static event Action Exploded = delegate { };
 
@@ -14,7 +14,7 @@ public class HelicopterCollision : MonoBehaviour
         if (IsLandingGearCollision(other) && !IsEnemy(other.gameObject)) return;
 
         var explosion = explosionPrefabs[Random.Range(0, explosionPrefabs.Length)];
-        Instantiate(explosion, transform.position, Quaternion.identity);
+        explosion.Get<Explosion>(transform.position, Quaternion.identity);
         PlayExplosionAudio();
 
         GetComponent<HelicopterController>().enabled = false;

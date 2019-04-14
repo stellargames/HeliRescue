@@ -14,7 +14,8 @@ https://assetstore.unity.com/packages/3d/props/weapons/mobile-missiles-pack-7189
 GAPH    Fx Explosion Pack
 https://assetstore.unity.com/packages/vfx/particles/fire-explosions/fx-explosion-pack-30102
 - Explosions
-    Assets/Fx Explosion Pack/*
+    Assets/Prefabs/Explosions/*
+    Assets/Materials/Explosions/*
 
 SOUND EXCEPTIONAL   Helicopters
 https://assetstore.unity.com/packages/audio/sound-fx/transportation/helicopters-115476
