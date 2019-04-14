@@ -3,6 +3,7 @@
 [RequireComponent(typeof(Light))]
 public class ExplosionFlashDimmer : MonoBehaviour
 {
+    private float _intensity;
     private Light _light;
     private float _time;
     [SerializeField] private float delay = 0.5f;
@@ -11,6 +12,13 @@ public class ExplosionFlashDimmer : MonoBehaviour
     private void Awake()
     {
         _light = GetComponent<Light>();
+        _intensity = _light.intensity;
+    }
+
+    private void OnEnable()
+    {
+        _light.intensity = _intensity;
+        _time = 0;
     }
 
     private void Update()
