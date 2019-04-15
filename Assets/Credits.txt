@@ -11,6 +11,11 @@ https://assetstore.unity.com/packages/3d/props/weapons/mobile-missiles-pack-7189
     Assets/Models/Missile/Materials/Missiles_Pack.mat
     Assets/Models/Missile/Missile.fbx
 
+???
+http://77.93.223.93/dod/sound/weapons/rocket1.wav
+- Missile launch sound
+    Assets/Audio/rocket1.wav
+
 GAPH    Fx Explosion Pack
 https://assetstore.unity.com/packages/vfx/particles/fire-explosions/fx-explosion-pack-30102
 - Explosions
@@ -54,3 +59,7 @@ http://fractalsoftworks.com/forum/index.php?topic=6360.0
 - Laser turrets
     Assets/Sprites/Turret.png
 
+Klankbeeld  horror cry adults
+https://freesound.org/people/klankbeeld/sounds/171078/
+- Skull scream
+    Assets/Audio/171078__klankbeeld__horror-scream-woman-long.wav

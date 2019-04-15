@@ -2,11 +2,12 @@
 - Ammo
 - Moving lasers
 - Variable length lasers
-- pooling system
++ Pooling system
     - explosions
     - missiles
-+ controllers
-- mobile control
-- rear rotor loss
-- refine heli collider, separate landing gear
-- enable lighting on cave sprites
++ Controllers
+- Mobile control
+- Rear rotor loss
+- Refine heli collider, separate landing gear
++ Enable lighting on cave sprites
+- better fitting tilemap
