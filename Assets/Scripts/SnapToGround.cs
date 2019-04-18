@@ -4,26 +4,20 @@ using UnityEngine;
 [ExecuteInEditMode]
 public class SnapToGround : MonoBehaviour
 {
-    [SerializeField] private LayerMask layerMask = 0;
     [SerializeField] private float distance = 5f;
+    [SerializeField] private LayerMask layerMask = 0;
 
     private void Update()
     {
-        if (layerMask == 0)
-        {
-            layerMask = LayerMask.GetMask("Default");
-        }
+        if (layerMask == 0) layerMask = LayerMask.GetMask("Default");
 
-        var t = transform;
-        var p = t.position;
-        t.rotation = Quaternion.identity;
+        var position = transform.position;
 
-        var origin = new Vector2(p.x, p.y);
-        var hitInfo = Physics2D.Raycast(origin, Vector2.down, distance, layerMask);
+        var origin = new Vector2(position.x, position.y);
+        var direction = -transform.up;
+        var hitInfo = Physics2D.Raycast(origin, direction, distance, layerMask);
         if (hitInfo)
-        {
-            transform.position = new Vector3(p.x, hitInfo.point.y, p.z);
-        }
+            transform.position = new Vector3(position.x, hitInfo.point.y, position.z);
     }
 }
 #endif
