@@ -6,13 +6,13 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private float spawnDelay = 3f;
-
-    private static GameManager Instance { get; set; }
+    private GameData _gameData;
 
     private int _loadedLevelBuildIndex;
     private string _saveFile;
-    private GameData _gameData;
+    [SerializeField] private float spawnDelay = 3f;
+
+    private static GameManager Instance { get; set; }
 
     private void Awake()
     {
@@ -25,13 +25,11 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
-            Debug.Log("GameManager Awake");
         }
     }
 
     private void Start()
     {
-        Debug.Log("GameManager Start");
         _gameData = new GameData();
         _gameData.Load();
         SpawnPlayer();
@@ -39,22 +37,17 @@ public class GameManager : MonoBehaviour
 
     private void OnEnable()
     {
-        Debug.Log("GameManager OnEnable");
         Checkpoint.Reached += CheckpointOnReached;
         HelicopterCollision.Exploded += OnHelicopterExploded;
     }
 
     private void Update()
     {
-        if (Input.GetKeyUp(KeyCode.X))
-        {
-            _gameData.Save();
-        }
+        if (Input.GetKeyUp(KeyCode.X)) _gameData.Save();
     }
 
     private void OnDisable()
     {
-        Debug.Log("GameManager OnDisable");
         HelicopterCollision.Exploded -= OnHelicopterExploded;
         Checkpoint.Reached -= CheckpointOnReached;
     }
@@ -67,7 +60,6 @@ public class GameManager : MonoBehaviour
 
     private void OnHelicopterExploded()
     {
-        Debug.Log("GameManager HelicopterExploded");
         StartCoroutine(DelayedRestart());
     }
 

@@ -6,11 +6,8 @@ namespace Persistence
 {
     public class GameData
     {
-        private string _saveFilePath;
         private const int Version = 1;
-
-        public PlayerSpawnPoint PlayerSpawnPoint { get; }
-        public CheckpointManager CheckpointManager { get; }
+        private readonly string _saveFilePath;
 
         public GameData()
         {
@@ -19,12 +16,12 @@ namespace Persistence
             _saveFilePath = Path.Combine(Application.persistentDataPath, "saveFile");
         }
 
+        public PlayerSpawnPoint PlayerSpawnPoint { get; }
+        public CheckpointManager CheckpointManager { get; }
+
         public void Load()
         {
-            if (!File.Exists(_saveFilePath))
-            {
-                return;
-            }
+            if (!File.Exists(_saveFilePath)) return;
             Debug.Log("GameData Load");
             using (var binaryReader = new BinaryReader(File.OpenRead(_saveFilePath)))
             {

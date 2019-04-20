@@ -6,7 +6,7 @@ public class MissilePickup : MonoBehaviour
 {
     private AudioSource _audioSource;
     private ParticleSystem _particleSystem;
-    [SerializeField] private int amount = 3;
+    [SerializeField] private int amountOfMissiles = 3;
     [SerializeField] private Transform visual;
 
     private void Awake()
@@ -20,13 +20,13 @@ public class MissilePickup : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             var inventory = other.gameObject.GetComponent<Inventory>();
-            var missilesTransferred = inventory.AddMissiles(amount);
+            var missilesTransferred = inventory.AddMissiles(amountOfMissiles);
 
             PlayPickupSound(missilesTransferred);
             PlayPickupParticles(missilesTransferred);
 
-            amount -= missilesTransferred;
-            if (amount <= 0)
+            amountOfMissiles -= missilesTransferred;
+            if (amountOfMissiles <= 0)
             {
                 visual.gameObject.SetActive(false);
                 Destroy(gameObject, 2f);

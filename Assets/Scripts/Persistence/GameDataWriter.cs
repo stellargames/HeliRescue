@@ -9,7 +9,7 @@ namespace Persistence
 
         public GameDataWriter(BinaryWriter writer)
         {
-            this._writer = writer;
+            _writer = writer;
         }
 
         public void Write(float value)

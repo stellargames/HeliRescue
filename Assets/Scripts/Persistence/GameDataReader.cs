@@ -5,8 +5,6 @@ namespace Persistence
 {
     public class GameDataReader
     {
-        public int Version { get; }
-
         private readonly BinaryReader _reader;
 
         public GameDataReader(BinaryReader reader, int version)
@@ -14,6 +12,8 @@ namespace Persistence
             Version = version;
             _reader = reader;
         }
+
+        public int Version { get; }
 
         public float ReadFloat()
         {

@@ -3,10 +3,9 @@ using UnityEngine;
 
 public class Fader : MonoBehaviour
 {
-    [SerializeField] private float fadeSpeed = 0.5f;
-
     private SpriteRenderer _bodySprite;
     private Coroutine _currentFadeRoutine;
+    [SerializeField] private float fadeSpeed = 0.5f;
 
     private void Awake()
     {

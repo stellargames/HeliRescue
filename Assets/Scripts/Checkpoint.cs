@@ -6,17 +6,16 @@ using UnityEngine;
 [RequireComponent(typeof(ParticleSystem))]
 public class Checkpoint : MonoBehaviour
 {
-    [SerializeField] private float minimumTimeBetweenLandings = 5f;
-    [SerializeField] private float blinkDelay = 1.5f;
-    [SerializeField] private GameObject blinkLight = null;
-
     private bool _activated;
-    private ParticleSystem _particle;
     private AudioSource _audioSource;
     private float _blinkTimer;
     private float _busyTimer;
+    private ParticleSystem _particle;
+    [SerializeField] private float blinkDelay = 1.5f;
+    [SerializeField] private GameObject blinkLight;
+    [SerializeField] private float minimumTimeBetweenLandings = 5f;
 
-    public static event Action<Checkpoint> Reached = delegate(Checkpoint point) { };
+    public static event Action<Checkpoint> Reached = delegate { };
 
     private void Awake()
     {
@@ -37,10 +36,7 @@ public class Checkpoint : MonoBehaviour
             _blinkTimer = 0;
         }
 
-        if (_busyTimer > 0f)
-        {
-            _busyTimer -= Time.deltaTime;
-        }
+        if (_busyTimer > 0f) _busyTimer -= Time.deltaTime;
     }
 
     private void OnCollisionEnter2D(Collision2D other)

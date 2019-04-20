@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerSpawnPoint : MonoBehaviour
 {
-    [SerializeField] private GameObject playerPrefab = null;
-    [SerializeField] private CinemachineVirtualCamera virtualCamera = null;
+    [SerializeField] private GameObject playerPrefab;
+    [SerializeField] private CinemachineVirtualCamera virtualCamera;
 
     public void SpawnPlayer()
     {

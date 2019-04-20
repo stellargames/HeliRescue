@@ -5,10 +5,9 @@ using UnityEngine;
 [RequireComponent(typeof(IHaveThrottle))]
 public class EngineAudio : MonoBehaviour
 {
-    [SerializeField] private float pitchMultiplier = 0.01f;
-
     private AudioSource _audioSource;
     private IHaveThrottle _vehicle;
+    [SerializeField] private float pitchMultiplier = 0.01f;
 
     private void Awake()
     {

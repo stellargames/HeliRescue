@@ -12,17 +12,11 @@ public class CheckpointManager : MonoBehaviour
 
     public void Load(GameDataReader reader)
     {
-        foreach (var checkpoint in _checkpoints)
-        {
-            checkpoint.Load(reader);
-        }
+        foreach (var checkpoint in _checkpoints) checkpoint.Load(reader);
     }
 
     public void Save(GameDataWriter writer)
     {
-        foreach (var checkpoint in _checkpoints)
-        {
-            checkpoint.Save(writer);
-        }
+        foreach (var checkpoint in _checkpoints) checkpoint.Save(writer);
     }
 }

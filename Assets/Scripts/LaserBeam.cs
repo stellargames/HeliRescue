@@ -18,8 +18,10 @@ public class LaserBeam : MonoBehaviour
     {
         var hits = new RaycastHit2D[1];
 
-        var origin = transform.position + transform.up;
-        var hitCount = Physics2D.RaycastNonAlloc(origin, transform.up, hits,
+
+        var myTransform = transform;
+        var origin = myTransform.position + myTransform.up;
+        var hitCount = Physics2D.RaycastNonAlloc(origin, myTransform.up, hits,
             100f, layerMask);
 
         if (hitCount > 0)

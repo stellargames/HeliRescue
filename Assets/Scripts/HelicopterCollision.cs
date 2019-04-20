@@ -34,8 +34,6 @@ public class HelicopterCollision : MonoBehaviour
     private static bool IsLandingGearCollision(Collision2D other)
     {
         var contactNormal = other.GetContact(0).normal;
-//        Debug.Log("Other: " + other.gameObject.name);
-//        Debug.Log("contactNormal: " + contactNormal);
         return contactNormal.x <= 0.3f && contactNormal.y >= 0.9f;
     }
 
