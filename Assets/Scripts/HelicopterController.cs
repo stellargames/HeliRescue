@@ -3,12 +3,17 @@ using Interfaces;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Inventory))]
 public class HelicopterController : MonoBehaviour, IHaveThrottle
 {
+    private Inventory _inventory;
+    private float _missileFireDelayTimer;
+
     private Rigidbody2D _rigidBody2D;
     private float _rotateForce;
     private Vector2 _throttleForce;
     [SerializeField] private float liftForce = 1000f;
+    [SerializeField] private float missileFireDelay = 0.2f;
     [SerializeField] private Missile missilePrefab;
     [SerializeField] private float moveSpeed = 1000f;
     [SerializeField] private float rotateSpeed = 4f;
@@ -18,13 +23,16 @@ public class HelicopterController : MonoBehaviour, IHaveThrottle
     private void Awake()
     {
         _rigidBody2D = GetComponent<Rigidbody2D>();
+        _inventory = GetComponent<Inventory>();
     }
 
     private void Update()
     {
         GetThrottleInput();
 
-        if (Input.GetButtonDown("Fire1")) FireMissile();
+        if (Input.GetButtonDown("Fire1")) TryFireMissile();
+
+        _missileFireDelayTimer += Time.deltaTime;
     }
 
     private void FixedUpdate()
@@ -44,18 +52,15 @@ public class HelicopterController : MonoBehaviour, IHaveThrottle
         _rotateForce = rotateSpeed * rotation;
     }
 
-    private void FireMissile()
+    private void TryFireMissile()
     {
-        var noseDirection = transform.right;
-        var direction =
-            new Vector3(noseDirection.x, noseDirection.y + noseDirection.z, 0);
-        var missileInstance =
-            missilePrefab.Get<Missile>(transform.position,
-                Quaternion.identity);
-//            Instantiate(missilePrefab, transform.position, Quaternion.identity);
-        missileInstance.transform.right = direction;
-        var missileBody = missileInstance.GetComponent<Rigidbody2D>();
-        missileBody.AddForce(_rigidBody2D.velocity * 0.5f, ForceMode2D.Impulse);
+        if (_missileFireDelayTimer < missileFireDelay) return;
+        if (_inventory.TakeMissiles(1) != 1) return;
+
+        var direction = Vector3ToVector2(transform.right);
+        var missileInstance = missilePrefab.Get<Missile>(transform.position, Quaternion.identity);
+        missileInstance.Launch(direction, _rigidBody2D.velocity);
+        _missileFireDelayTimer = 0;
     }
 
     private void ApplyThrottleToBody()
@@ -66,5 +71,10 @@ public class HelicopterController : MonoBehaviour, IHaveThrottle
         var direction = transform.InverseTransformDirection(velocity);
         var rotateDegrees = new Vector3(direction.z, yRotation, -direction.x);
         transform.rotation = Quaternion.Euler(rotateDegrees);
+    }
+
+    private static Vector2 Vector3ToVector2(Vector3 vector)
+    {
+        return new Vector2(vector.x, vector.y + vector.z);
     }
 }

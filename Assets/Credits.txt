@@ -63,3 +63,9 @@ Klankbeeld  horror cry adults
 https://freesound.org/people/klankbeeld/sounds/171078/
 - Skull scream
     Assets/Audio/171078__klankbeeld__horror-scream-woman-long.wav
+
+nioczkus    1911 Reload
+https://freesound.org/people/nioczkus/sounds/396331/
+- Missile reload
+    Assets/Audio/396331__nioczkus__1911-reload.aiff
+    

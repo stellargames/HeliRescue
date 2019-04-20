@@ -42,6 +42,12 @@ public class Missile : PooledMonoBehaviour
         ReturnToPool(3f);
     }
 
+    public void Launch(Vector2 direction, Vector2 velocity)
+    {
+        transform.right = direction;
+        _physicsBody.AddForce(velocity * 0.5f, ForceMode2D.Impulse);
+    }
+
     private void InstantiateExplosionPrefab(ContactPoint2D contact)
     {
         var explosionPrefab = explosionPrefabs[Random.Range(0, explosionPrefabs.Length)];
