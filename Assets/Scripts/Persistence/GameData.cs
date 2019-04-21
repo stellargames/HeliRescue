@@ -6,7 +6,7 @@ namespace Persistence
 {
     public class GameData
     {
-        private const int Version = 1;
+        private const int Version = 2;
         private readonly string _saveFilePath;
 
         public GameData()
@@ -26,8 +26,16 @@ namespace Persistence
             using (var binaryReader = new BinaryReader(File.OpenRead(_saveFilePath)))
             {
                 var reader = new GameDataReader(binaryReader, -binaryReader.ReadInt32());
-                CheckpointManager.Load(reader);
-                PlayerSpawnPoint.Load(reader);
+                if (reader.Version == Version)
+                {
+                    CheckpointManager.Load(reader);
+                    PlayerSpawnPoint.Load(reader);
+                }
+                else
+                {
+                    Debug.LogWarningFormat("Game version {0} cannot read save file version {1}", Version,
+                        reader.Version);
+                }
             }
         }
 

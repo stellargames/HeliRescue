@@ -338,11 +338,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   liftForce: 1000
+  missileFireDelay: 0.2
   missilePrefab: {fileID: 3421026640380133216, guid: b245d6446fe8fde4f890bfe413b99fce,
     type: 3}
   moveSpeed: 1000
   rotateSpeed: 4
-  missileFireDelay: 0.2
 --- !u!114 &7380071079719671974
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -521,5 +521,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2350d33846844b8448d3b925087cf66e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  missiles: 100
-  maxMissiles: 100
+  maxMissiles: 21
+  missiles: 0

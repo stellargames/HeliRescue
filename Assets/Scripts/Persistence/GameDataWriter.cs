@@ -1,5 +1,7 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Persistence
 {
@@ -28,6 +30,11 @@ namespace Persistence
         public void Write(int value)
         {
             _writer.Write(value);
+        }
+
+        public void Write(Guid value)
+        {
+            _writer.Write(value.ToByteArray());
         }
 
         public void Write(Quaternion value)

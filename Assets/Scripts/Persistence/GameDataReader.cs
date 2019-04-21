@@ -1,5 +1,7 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Persistence
 {
@@ -62,6 +64,12 @@ namespace Persistence
         public bool ReadBool()
         {
             return _reader.ReadBoolean();
+        }
+
+        public Guid ReadGuid()
+        {
+            var bytes = _reader.ReadBytes(16);
+            return new Guid(bytes);
         }
     }
 }

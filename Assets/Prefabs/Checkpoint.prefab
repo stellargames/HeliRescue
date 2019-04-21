@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6313663455919447320}
   - component: {fileID: 6313663455919447321}
   - component: {fileID: 6313663455919447327}
+  - component: {fileID: -241550981245516062}
   m_Layer: 0
   m_Name: Checkpoint
   m_TagString: Untagged
@@ -50,9 +51,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35945e0fc5f51d4459b36df31ec4c33d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minimumTimeBetweenLandings: 10
   blinkDelay: 1.5
   blinkLight: {fileID: 6313663455978738826}
+  minimumTimeBetweenLandings: 10
 --- !u!114 &6313663455919447316
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65,10 +66,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1997d04b9eefea4abe614b4ba8d21fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  distance: 5
   layerMask:
     serializedVersion: 2
     m_Bits: 1024
-  distance: 5
 --- !u!61 &6313663455919447317
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4912,6 +4913,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-241550981245516062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6313663455919447318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a81424be4e0e9e4081bf017277c23fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializedGuid: b7787ac8c3e2244289f9112ef3b55ae5
 --- !u!1 &6313663455978738826
 GameObject:
   m_ObjectHideFlags: 0

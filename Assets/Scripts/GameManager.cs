@@ -32,18 +32,13 @@ public class GameManager : MonoBehaviour
     {
         _gameData = new GameData();
         _gameData.Load();
-        SpawnPlayer();
+        _gameData.PlayerSpawnPoint.SpawnPlayer();
     }
 
     private void OnEnable()
     {
         Checkpoint.Reached += CheckpointOnReached;
         HelicopterCollision.Exploded += OnHelicopterExploded;
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyUp(KeyCode.X)) _gameData.Save();
     }
 
     private void OnDisable()
@@ -68,10 +63,5 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(spawnDelay);
         yield return SceneManager.LoadSceneAsync(0);
         Start();
-    }
-
-    private void SpawnPlayer()
-    {
-        _gameData.PlayerSpawnPoint.SpawnPlayer();
     }
 }
