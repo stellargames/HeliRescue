@@ -1,4 +1,5 @@
 ﻿using System;
+using Persistence;
 using UnityEngine;
 
 public class Inventory : MonoBehaviour
@@ -36,5 +37,15 @@ public class Inventory : MonoBehaviour
     {
         missiles += amount;
         MissileAmountChanged.Invoke(missiles);
+    }
+
+    public void Save(GameDataWriter writer)
+    {
+        writer.Write(missiles);
+    }
+
+    public void Load(GameDataReader reader)
+    {
+        missiles = reader.ReadInt();
     }
 }

@@ -3,15 +3,14 @@ using Interfaces;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-[RequireComponent(typeof(Inventory))]
 public class HelicopterController : MonoBehaviour, IHaveThrottle
 {
     private Inventory _inventory;
     private float _missileFireDelayTimer;
-
     private Rigidbody2D _rigidBody2D;
     private float _rotateForce;
     private Vector2 _throttleForce;
+
     [SerializeField] private float liftForce = 1000f;
     [SerializeField] private float missileFireDelay = 0.2f;
     [SerializeField] private Missile missilePrefab;
@@ -23,7 +22,7 @@ public class HelicopterController : MonoBehaviour, IHaveThrottle
     private void Awake()
     {
         _rigidBody2D = GetComponent<Rigidbody2D>();
-        _inventory = GetComponent<Inventory>();
+        _inventory = GetComponentInParent<Inventory>();
     }
 
     private void Update()

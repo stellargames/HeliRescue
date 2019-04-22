@@ -123,6 +123,7 @@ GameObject:
   - component: {fileID: 4896131023987964784}
   - component: {fileID: 4896131023987964786}
   - component: {fileID: 175870516}
+  - component: {fileID: 1783618900319936650}
   m_Layer: 0
   m_Name: Skull
   m_TagString: Enemy
@@ -157,8 +158,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5654f8eb438418f43b329288ce8ef686, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chaseSpeed: 0.05
   body: {fileID: 4896131023591454867}
+  chaseSpeed: 0.05
 --- !u!58 &4896131023987964784
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -292,3 +293,16 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1783618900319936650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4896131023987964785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a81424be4e0e9e4081bf017277c23fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializedGuid: 7b4909547c8bcd4283bb39146221e925

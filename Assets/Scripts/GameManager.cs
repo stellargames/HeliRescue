@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
     {
         _gameData = new GameData();
         _gameData.Load();
-        _gameData.PlayerSpawnPoint.SpawnPlayer();
+        _gameData.Player.SpawnHelicopter();
     }
 
     private void OnEnable()
@@ -49,7 +49,6 @@ public class GameManager : MonoBehaviour
 
     private void CheckpointOnReached(Checkpoint checkpoint)
     {
-        _gameData.PlayerSpawnPoint.MoveTo(checkpoint.transform.position);
         _gameData.Save();
     }
 

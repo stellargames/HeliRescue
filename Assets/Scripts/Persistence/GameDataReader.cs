@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -7,12 +10,14 @@ namespace Persistence
 {
     public class GameDataReader
     {
+        private readonly IFormatter _formatter;
         private readonly BinaryReader _reader;
 
         public GameDataReader(BinaryReader reader, int version)
         {
             Version = version;
             _reader = reader;
+            _formatter = new BinaryFormatter();
         }
 
         public int Version { get; }
@@ -70,6 +75,16 @@ namespace Persistence
         {
             var bytes = _reader.ReadBytes(16);
             return new Guid(bytes);
+        }
+
+        public void Skip(int itemSize)
+        {
+            _reader.ReadBytes(itemSize);
+        }
+
+        public Dictionary<Guid, T> ReadDictionary<T>()
+        {
+            return (Dictionary<Guid, T>) _formatter.Deserialize(_reader.BaseStream);
         }
     }
 }

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6447234485688993381}
   - component: {fileID: 6447234485688993382}
   - component: {fileID: 6447234485688993383}
+  - component: {fileID: 1096490016552886178}
   m_Layer: 0
   m_Name: Missile Pickup
   m_TagString: Untagged
@@ -48,7 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0367626cd7ccc624f95b7e0b3fce4318, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amount: 3
+  amountOfMissiles: 3
   visual: {fileID: 6447234486296260514}
 --- !u!61 &6447234485688993385
 BoxCollider2D:
@@ -4893,6 +4894,19 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!114 &1096490016552886178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6447234486198141132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a81424be4e0e9e4081bf017277c23fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializedGuid: d4b7907c32b825469b82e559a7de80d8
 --- !u!1 &6447234486198141134
 GameObject:
   m_ObjectHideFlags: 0

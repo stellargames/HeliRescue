@@ -1,13 +1,34 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
+using Persistence;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider2D))]
-public class MissilePickup : MonoBehaviour
+[RequireComponent(typeof(GuidComponent))]
+public class MissilePickup : MonoBehaviour, IPersist
 {
     private AudioSource _audioSource;
     private ParticleSystem _particleSystem;
-    [SerializeField] private int amountOfMissiles = 3;
+
+    [SerializeField] private int amountAvailable = 3;
     [SerializeField] private Transform visual;
+
+    public Guid GetGuid()
+    {
+        return GetComponent<GuidComponent>().GetGuid();
+    }
+
+    public object Save()
+    {
+        return new MissilePickupData {amountAvailable = amountAvailable};
+    }
+
+    public void Load(object obj)
+    {
+        var data = (MissilePickupData) obj;
+        amountAvailable = data.amountAvailable;
+        if (amountAvailable <= 0) Destroy(gameObject);
+    }
 
     private void Awake()
     {
@@ -19,14 +40,14 @@ public class MissilePickup : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            var inventory = other.gameObject.GetComponent<Inventory>();
-            var missilesTransferred = inventory.AddMissiles(amountOfMissiles);
+            var inventory = other.gameObject.GetComponentInParent<Inventory>();
+            var itemsTransferred = inventory.AddMissiles(amountAvailable);
 
-            PlayPickupSound(missilesTransferred);
-            PlayPickupParticles(missilesTransferred);
+            PlayMultiplePickupSound(itemsTransferred);
+            PlayPickupParticles(itemsTransferred);
 
-            amountOfMissiles -= missilesTransferred;
-            if (amountOfMissiles <= 0)
+            amountAvailable -= itemsTransferred;
+            if (amountAvailable <= 0)
             {
                 visual.gameObject.SetActive(false);
                 Destroy(gameObject, 2f);
@@ -39,9 +60,9 @@ public class MissilePickup : MonoBehaviour
         if (_particleSystem != null && amount > 0) _particleSystem.Play();
     }
 
-    private void PlayPickupSound(int amount)
+    private void PlayMultiplePickupSound(int amount)
     {
-        if ((_audioSource != null) & (amount > 0))
+        if (_audioSource != null && amount > 0)
         {
             _audioSource.loop = true;
             var duration = amount * _audioSource.clip.length * 0.9f;
@@ -54,5 +75,11 @@ public class MissilePickup : MonoBehaviour
     {
         yield return new WaitForSeconds(duration);
         _audioSource.loop = false;
+    }
+
+    [Serializable]
+    private struct MissilePickupData
+    {
+        public int amountAvailable;
     }
 }

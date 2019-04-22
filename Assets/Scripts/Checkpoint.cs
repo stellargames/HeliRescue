@@ -2,18 +2,35 @@
 using Persistence;
 using UnityEngine;
 
+[RequireComponent(typeof(GuidComponent))]
 [RequireComponent(typeof(AudioSource))]
 [RequireComponent(typeof(ParticleSystem))]
-public class Checkpoint : MonoBehaviour
+public class Checkpoint : MonoBehaviour, IPersist
 {
     private bool _activated;
     private AudioSource _audioSource;
     private float _blinkTimer;
-    private float _busyTimer;
+    private float _lastActivated;
     private ParticleSystem _particle;
     [SerializeField] private float blinkDelay = 1.5f;
     [SerializeField] private GameObject blinkLight;
     [SerializeField] private float minimumTimeBetweenLandings = 5f;
+
+    public void Load(object obj)
+    {
+        var data = (CheckpointData) obj;
+        _activated = data.activated;
+    }
+
+    public object Save()
+    {
+        return new CheckpointData {activated = _activated};
+    }
+
+    public Guid GetGuid()
+    {
+        return GetComponent<GuidComponent>().GetGuid();
+    }
 
     public static event Action<Checkpoint> Reached = delegate { };
 
@@ -34,26 +51,22 @@ public class Checkpoint : MonoBehaviour
             blinkLight.SetActive(!blinkLight.activeSelf);
             _blinkTimer = 0;
         }
-
-        if (_busyTimer > 0f) _busyTimer -= Time.deltaTime;
     }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (_busyTimer > 0f) return;
         if (!other.gameObject.CompareTag("Player")) return;
-
         Activate();
     }
 
     private void OnCollisionExit2D(Collision2D other)
     {
-        _busyTimer = minimumTimeBetweenLandings;
+        _lastActivated = Time.time;
     }
 
     private void Activate()
     {
-        if (_activated) return;
+        if (Time.time - _lastActivated < minimumTimeBetweenLandings) return;
 
         _particle.Play();
         _audioSource.Play();
@@ -61,13 +74,9 @@ public class Checkpoint : MonoBehaviour
         Reached.Invoke(this);
     }
 
-    public void Load(GameDataReader reader)
+    [Serializable]
+    private struct CheckpointData
     {
-        _activated = reader.ReadBool();
-    }
-
-    public void Save(GameDataWriter writer)
-    {
-        writer.Write(_activated);
+        public bool activated;
     }
 }

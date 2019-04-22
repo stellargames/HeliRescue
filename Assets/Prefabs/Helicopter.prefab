@@ -302,9 +302,8 @@ GameObject:
   - component: {fileID: 7380071079719671972}
   - component: {fileID: 7380071079719671973}
   - component: {fileID: 7380071079719671975}
-  - component: {fileID: 4786385775824000950}
   m_Layer: 8
-  m_Name: Player
+  m_Name: Helicopter
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -509,17 +508,3 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &4786385775824000950
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7380071079719671971}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2350d33846844b8448d3b925087cf66e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxMissiles: 21
-  missiles: 0

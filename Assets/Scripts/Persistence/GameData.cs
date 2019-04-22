@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Linq;
 using UnityEngine;
 using static UnityEngine.Object;
 
@@ -11,13 +12,15 @@ namespace Persistence
 
         public GameData()
         {
-            CheckpointManager = FindObjectOfType<CheckpointManager>();
-            PlayerSpawnPoint = FindObjectOfType<PlayerSpawnPoint>();
+            Player = FindObjectOfType<Player>();
+            PersistentCollections = FindObjectsOfType<PersistentCollection>()
+                .OrderBy(collection => collection.name).ToArray();
+
             _saveFilePath = Path.Combine(Application.persistentDataPath, "saveFile");
         }
 
-        public PlayerSpawnPoint PlayerSpawnPoint { get; }
-        public CheckpointManager CheckpointManager { get; }
+        private PersistentCollection[] PersistentCollections { get; }
+        public Player Player { get; }
 
         public void Load()
         {
@@ -28,8 +31,10 @@ namespace Persistence
                 var reader = new GameDataReader(binaryReader, -binaryReader.ReadInt32());
                 if (reader.Version == Version)
                 {
-                    CheckpointManager.Load(reader);
-                    PlayerSpawnPoint.Load(reader);
+                    Player.Load(reader);
+                    var inventory = FindObjectOfType<Inventory>();
+                    inventory.Load(reader);
+                    foreach (var persistentCollection in PersistentCollections) persistentCollection.Load(reader);
                 }
                 else
                 {
@@ -46,8 +51,11 @@ namespace Persistence
             {
                 var writer = new GameDataWriter(binaryWriter);
                 writer.Write(-Version);
-                CheckpointManager.Save(writer);
-                PlayerSpawnPoint.Save(writer);
+                Player.Save(writer);
+                var inventory = FindObjectOfType<Inventory>();
+                inventory.Save(writer);
+
+                foreach (var persistentCollection in PersistentCollections) persistentCollection.Save(writer);
             }
         }
     }

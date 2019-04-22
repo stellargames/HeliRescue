@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -7,11 +10,13 @@ namespace Persistence
 {
     public class GameDataWriter
     {
+        private readonly IFormatter _formatter;
         private readonly BinaryWriter _writer;
 
         public GameDataWriter(BinaryWriter writer)
         {
             _writer = writer;
+            _formatter = new BinaryFormatter();
         }
 
         public void Write(float value)
@@ -61,6 +66,11 @@ namespace Persistence
         public void Write(bool value)
         {
             _writer.Write(value);
+        }
+
+        public void WriteDictionary<T>(Dictionary<Guid, T> dictionary)
+        {
+            _formatter.Serialize(_writer.BaseStream, dictionary);
         }
     }
 }
