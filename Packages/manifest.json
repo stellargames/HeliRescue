@@ -1,8 +1,8 @@
 {
   "dependencies": {
+    "com.cordonez.dependencygraph": "https://github.com/cordonez/DependencyGraph.git",
     "com.unity.cinemachine": "2.3.3",
     "com.unity.collab-proxy": "1.2.16",
-    "com.unity.multiplayer-hlapi": "1.0.2",
     "com.unity.package-manager-ui": "2.1.2",
     "com.unity.textmeshpro": "2.0.0",
     "com.unity.timeline": "1.0.0",
@@ -37,5 +37,11 @@
     "com.unity.modules.vr": "1.0.0",
     "com.unity.modules.wind": "1.0.0",
     "com.unity.modules.xr": "1.0.0"
+  },
+  "lock": {
+    "com.cordonez.dependencygraph": {
+      "hash": "003913a4d3ed7a4479891adbf2cc61c27f7c773f",
+      "revision": "HEAD"
+    }
   }
 }

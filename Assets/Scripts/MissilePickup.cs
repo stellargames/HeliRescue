@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections;
 using Persistence;
+using Skytanet.SimpleDatabase;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider2D))]
-[RequireComponent(typeof(GuidComponent))]
+[RequireComponent(typeof(PersistenceComponent))]
 public class MissilePickup : MonoBehaviour, IPersist
 {
     private AudioSource _audioSource;
@@ -13,45 +14,41 @@ public class MissilePickup : MonoBehaviour, IPersist
     [SerializeField] private int amountAvailable = 3;
     [SerializeField] private Transform visual;
 
-    public Guid GetGuid()
+    public Guid Guid { get; private set; }
+
+    public void Load(SaveFile file)
     {
-        return GetComponent<GuidComponent>().GetGuid();
+        amountAvailable = file.Get(Guid.ToString(), amountAvailable);
+        gameObject.SetActive(amountAvailable > 0);
     }
 
-    public object Save()
+    public void Save(SaveFile file)
     {
-        return new MissilePickupData {amountAvailable = amountAvailable};
-    }
-
-    public void Load(object obj)
-    {
-        var data = (MissilePickupData) obj;
-        amountAvailable = data.amountAvailable;
-        if (amountAvailable <= 0) Destroy(gameObject);
+        file.Set(Guid.ToString(), amountAvailable);
     }
 
     private void Awake()
     {
+        Guid = GetComponent<GuidComponent>().GetGuid();
         _audioSource = GetComponent<AudioSource>();
         _particleSystem = GetComponent<ParticleSystem>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (!other.CompareTag("Player")) return;
+
+        var inventory = other.gameObject.GetComponentInParent<Inventory>();
+        var itemsTransferred = inventory.AddMissiles(amountAvailable);
+
+        PlayMultiplePickupSound(itemsTransferred);
+        PlayPickupParticles(itemsTransferred);
+
+        amountAvailable -= itemsTransferred;
+        if (amountAvailable <= 0)
         {
-            var inventory = other.gameObject.GetComponentInParent<Inventory>();
-            var itemsTransferred = inventory.AddMissiles(amountAvailable);
-
-            PlayMultiplePickupSound(itemsTransferred);
-            PlayPickupParticles(itemsTransferred);
-
-            amountAvailable -= itemsTransferred;
-            if (amountAvailable <= 0)
-            {
-                visual.gameObject.SetActive(false);
-                Destroy(gameObject, 2f);
-            }
+            visual.gameObject.SetActive(false);
+            Destroy(gameObject, 2f);
         }
     }
 
@@ -75,11 +72,5 @@ public class MissilePickup : MonoBehaviour, IPersist
     {
         yield return new WaitForSeconds(duration);
         _audioSource.loop = false;
-    }
-
-    [Serializable]
-    private struct MissilePickupData
-    {
-        public int amountAvailable;
     }
 }

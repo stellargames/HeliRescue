@@ -1,33 +1,39 @@
-﻿using Persistence;
+﻿using Cinemachine;
 using UnityEngine;
 
 [RequireComponent(typeof(Inventory))]
 public class Player : MonoBehaviour
 {
-    private Inventory _inventory;
     private GameObject _vehicle;
 
-    [SerializeField] private GameObject helicopterPrefab;
+    [SerializeField] private GameObject vehiclePrefab;
+    [SerializeField] private CinemachineVirtualCamera virtualCamera;
 
-    private void Awake()
+    public Position Position
     {
-        _inventory = GetComponent<Inventory>();
+        get =>
+            _vehicle == null
+                ? new Position
+                {
+                    position = transform.position,
+                    rotation = transform.rotation
+                }
+                : new Position
+                {
+                    position = _vehicle.transform.position,
+                    rotation = _vehicle.transform.rotation
+                };
+        set
+        {
+            transform.position = value.position;
+            transform.rotation = value.rotation;
+        }
     }
 
-    public void SpawnHelicopter()
+    public void SpawnVehicle()
     {
-        _vehicle = Instantiate(helicopterPrefab, transform);
-    }
-
-    public void Save(GameDataWriter writer)
-    {
-        writer.Write(_vehicle.transform.position);
-        _inventory.Save(writer);
-    }
-
-    public void Load(GameDataReader reader)
-    {
-        transform.position = reader.ReadVector3();
-        _inventory.Load(reader);
+        _vehicle = Instantiate(vehiclePrefab, transform);
+        virtualCamera.m_Follow = _vehicle.transform;
+        virtualCamera.m_LookAt = _vehicle.transform;
     }
 }

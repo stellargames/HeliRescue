@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.IO;
 using Persistence;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -6,10 +7,11 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    private GameData _gameData;
-
+    private const bool Debug = true;
+    private GameState _gameData;
     private int _loadedLevelBuildIndex;
-    private string _saveFile;
+    private Player _player;
+
     [SerializeField] private float spawnDelay = 3f;
 
     private static GameManager Instance { get; set; }
@@ -26,13 +28,15 @@ public class GameManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
         }
+
+        _player = GetComponentInChildren<Player>();
     }
 
     private void Start()
     {
-        _gameData = new GameData();
+        _gameData = new GameState(_player);
         _gameData.Load();
-        _gameData.Player.SpawnHelicopter();
+        _player.SpawnVehicle();
     }
 
     private void OnEnable()
@@ -45,6 +49,14 @@ public class GameManager : MonoBehaviour
     {
         HelicopterCollision.Exploded -= OnHelicopterExploded;
         Checkpoint.Reached -= CheckpointOnReached;
+    }
+
+    private void Update()
+    {
+        if (Debug && Input.GetKeyUp(KeyCode.X))
+        {
+            File.Delete(Path.Combine(Application.persistentDataPath, "SaveFile.json"));
+        }
     }
 
     private void CheckpointOnReached(Checkpoint checkpoint)

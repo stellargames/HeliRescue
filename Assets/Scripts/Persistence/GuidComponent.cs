@@ -84,7 +84,10 @@ namespace Persistence
             }
 
             var instanceId = GetInstanceID();
-            while (!GuidManager.Add(_guid, instanceId)) _guid = Guid.NewGuid();
+            while (!GuidManager.Add(_guid, instanceId))
+            {
+                _guid = Guid.NewGuid();
+            }
 
             serializedGuid = _guid.ToByteArray();
         }

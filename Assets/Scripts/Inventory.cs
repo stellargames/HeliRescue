@@ -1,5 +1,4 @@
 ﻿using System;
-using Persistence;
 using UnityEngine;
 
 public class Inventory : MonoBehaviour
@@ -8,11 +7,6 @@ public class Inventory : MonoBehaviour
     [SerializeField] private int missiles = 100;
 
     public static event Action<int> MissileAmountChanged = delegate { };
-
-    private void Awake()
-    {
-        AdjustMissileAmount(0);
-    }
 
     public int TakeMissiles(int amount)
     {
@@ -37,15 +31,5 @@ public class Inventory : MonoBehaviour
     {
         missiles += amount;
         MissileAmountChanged.Invoke(missiles);
-    }
-
-    public void Save(GameDataWriter writer)
-    {
-        writer.Write(missiles);
-    }
-
-    public void Load(GameDataReader reader)
-    {
-        missiles = reader.ReadInt();
     }
 }

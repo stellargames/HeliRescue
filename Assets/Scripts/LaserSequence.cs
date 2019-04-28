@@ -17,7 +17,10 @@ public class LaserSequence : MonoBehaviour
 
     private void SwitchBeams()
     {
-        for (var i = 0; i < laserBeams.Length; i++) laserBeams[i].SetBeamStatus((i + _currentIndex) % modulo == 0);
+        for (var i = 0; i < laserBeams.Length; i++)
+        {
+            laserBeams[i].SetBeamStatus((i + _currentIndex) % modulo == 0);
+        }
     }
 
     private void Update()

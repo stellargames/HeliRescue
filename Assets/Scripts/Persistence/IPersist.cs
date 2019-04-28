@@ -1,11 +1,12 @@
 using System;
+using Skytanet.SimpleDatabase;
 
 namespace Persistence
 {
-    internal interface IPersist
+    public interface IPersist
     {
-        Guid GetGuid();
-        object Save();
-        void Load(object obj);
+        Guid Guid { get; }
+        void Load(SaveFile file);
+        void Save(SaveFile file);
     }
 }

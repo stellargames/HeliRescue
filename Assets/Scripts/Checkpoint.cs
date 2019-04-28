@@ -1,8 +1,9 @@
 ﻿using System;
 using Persistence;
+using Skytanet.SimpleDatabase;
 using UnityEngine;
 
-[RequireComponent(typeof(GuidComponent))]
+[RequireComponent(typeof(PersistenceComponent))]
 [RequireComponent(typeof(AudioSource))]
 [RequireComponent(typeof(ParticleSystem))]
 public class Checkpoint : MonoBehaviour, IPersist
@@ -16,26 +17,24 @@ public class Checkpoint : MonoBehaviour, IPersist
     [SerializeField] private GameObject blinkLight;
     [SerializeField] private float minimumTimeBetweenLandings = 5f;
 
-    public void Load(object obj)
+    public Guid Guid { get; private set; }
+
+    public void Load(SaveFile file)
     {
-        var data = (CheckpointData) obj;
-        _activated = data.activated;
+        _activated = file.Get(Guid.ToString(), false);
+        if (_activated) _lastActivated = Time.time;
     }
 
-    public object Save()
+    public void Save(SaveFile file)
     {
-        return new CheckpointData {activated = _activated};
-    }
-
-    public Guid GetGuid()
-    {
-        return GetComponent<GuidComponent>().GetGuid();
+        file.Set(Guid.ToString(), _activated);
     }
 
     public static event Action<Checkpoint> Reached = delegate { };
 
     private void Awake()
     {
+        Guid = GetComponent<GuidComponent>().GetGuid();
         _audioSource = GetComponent<AudioSource>();
         _particle = GetComponent<ParticleSystem>();
         blinkLight.SetActive(false);
@@ -61,6 +60,7 @@ public class Checkpoint : MonoBehaviour, IPersist
 
     private void OnCollisionExit2D(Collision2D other)
     {
+        if (!other.gameObject.CompareTag("Player")) return;
         _lastActivated = Time.time;
     }
 
@@ -72,11 +72,5 @@ public class Checkpoint : MonoBehaviour, IPersist
         _audioSource.Play();
         _activated = true;
         Reached.Invoke(this);
-    }
-
-    [Serializable]
-    private struct CheckpointData
-    {
-        public bool activated;
     }
 }
