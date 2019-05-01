@@ -5,21 +5,13 @@ namespace UI
 {
     public class UIManager : MonoBehaviour
     {
+        [SerializeField] private Inventory inventory;
         [SerializeField] private TextMeshProUGUI missileCount;
 
-        private void OnEnable()
+        private void Update()
         {
-            Inventory.MissileAmountChanged += InventoryOnMissileAmountChanged;
-        }
-
-        private void OnDisable()
-        {
-            Inventory.MissileAmountChanged -= InventoryOnMissileAmountChanged;
-        }
-
-        private void InventoryOnMissileAmountChanged(int amount)
-        {
-            missileCount.text = $"{amount:D3}";
+            var missileAmount = inventory.MissileAmount;
+            missileCount.text = $"{missileAmount:D3}";
         }
     }
 }

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6313663455919447320}
   - component: {fileID: 6313663455919447321}
   - component: {fileID: 6313663455919447327}
-  - component: {fileID: -241550981245516062}
+  - component: {fileID: 4981000534739890500}
   m_Layer: 0
   m_Name: Checkpoint
   m_TagString: Untagged
@@ -4913,7 +4913,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &-241550981245516062
+--- !u!114 &4981000534739890500
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4922,10 +4922,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6313663455919447318}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a81424be4e0e9e4081bf017277c23fe, type: 3}
+  m_Script: {fileID: 11500000, guid: 32ed6e1cc042d414d996398555c1b669, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serializedGuid: 8a105a3c2c07534cb99ba21dba7c0a3c
+  serializedGuid: 9f13a14518319549b9b12eca09695e6a
 --- !u!1 &6313663455978738826
 GameObject:
   m_ObjectHideFlags: 0

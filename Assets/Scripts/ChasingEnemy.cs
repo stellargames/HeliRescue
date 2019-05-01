@@ -48,13 +48,14 @@ public class ChasingEnemy : MonoBehaviour, IPersist
 
     private void Awake()
     {
-        Guid = GetComponent<GuidComponent>().GetGuid();
+        Guid = GetComponent<PersistenceComponent>().GetGuid();
         _fader = body.GetComponent<Fader>();
         _audioSource = GetComponent<AudioSource>();
         var radius = GetComponent<CircleCollider2D>().radius;
         if (visualRange <= radius)
         {
-            Debug.LogWarning($"visualRange {visualRange} on {gameObject.name} is too small. Setting to {radius * 2}");
+            Debug.LogWarning(
+                $"visualRange {visualRange} on {gameObject.name} is too small. Setting to {radius * 2}");
             visualRange = radius * 2;
         }
     }
@@ -90,18 +91,17 @@ public class ChasingEnemy : MonoBehaviour, IPersist
     private void FollowCurrentTarget()
     {
         if (TargetInRange())
-        {
             transform.position =
                 Vector3.MoveTowards(transform.position, _currentTarget.position,
                     chaseSpeed);
-        }
     }
 
     private bool AcquireTarget()
     {
         var contactFilter2D = new ContactFilter2D().NoFilter();
         var collider2Ds = new List<Collider2D>();
-        Physics2D.OverlapCircle(transform.position, visualRange, contactFilter2D, collider2Ds);
+        Physics2D.OverlapCircle(transform.position, visualRange, contactFilter2D,
+            collider2Ds);
         foreach (var other in collider2Ds)
         {
             if (!IsPlayer(other)) continue;

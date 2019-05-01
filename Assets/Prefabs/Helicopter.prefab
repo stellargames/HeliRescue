@@ -342,6 +342,7 @@ MonoBehaviour:
     type: 3}
   moveSpeed: 1000
   rotateSpeed: 4
+  inventory: {fileID: 11400000, guid: 2af910fb182654c4c8b2f4b43695a743, type: 2}
 --- !u!114 &7380071079719671974
 MonoBehaviour:
   m_ObjectHideFlags: 0

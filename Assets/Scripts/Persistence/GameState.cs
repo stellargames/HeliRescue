@@ -23,10 +23,7 @@ namespace Persistence
             LoadPlayer(saveFile);
 
             var lists = Resources.FindObjectsOfTypeAll<PersistableItemList>();
-            foreach (var itemList in lists)
-            {
-                itemList.Load(saveFile);
-            }
+            foreach (var itemList in lists) itemList.Load(saveFile);
 
             saveFile.Close();
         }
@@ -38,22 +35,19 @@ namespace Persistence
             SavePlayer(saveFile);
 
             var lists = Resources.FindObjectsOfTypeAll<PersistableItemList>();
-            foreach (var itemList in lists)
-            {
-                itemList.Save(saveFile);
-            }
+            foreach (var itemList in lists) itemList.Save(saveFile);
 
             saveFile.Close();
         }
 
         private void LoadPlayer(SaveFile saveFile)
         {
-            _player.Position = saveFile.Get("playerData", _player.Position);
+            _player.Load(saveFile);
         }
 
         private void SavePlayer(SaveFile saveFile)
         {
-            saveFile.Set("playerData", _player.Position);
+            _player.Save(saveFile);
         }
     }
 }

@@ -5,11 +5,12 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class HelicopterController : MonoBehaviour, IHaveThrottle
 {
-    private Inventory _inventory;
+//    private Inventory _inventory;
     private float _missileFireDelayTimer;
     private Rigidbody2D _rigidBody2D;
     private float _rotateForce;
     private Vector2 _throttleForce;
+    [SerializeField] private Inventory inventory;
 
     [SerializeField] private float liftForce = 1000f;
     [SerializeField] private float missileFireDelay = 0.2f;
@@ -22,7 +23,7 @@ public class HelicopterController : MonoBehaviour, IHaveThrottle
     private void Awake()
     {
         _rigidBody2D = GetComponent<Rigidbody2D>();
-        _inventory = GetComponentInParent<Inventory>();
+//        _inventory = GetComponentInParent<Inventory>();
     }
 
     private void Update()
@@ -54,10 +55,12 @@ public class HelicopterController : MonoBehaviour, IHaveThrottle
     private void TryFireMissile()
     {
         if (_missileFireDelayTimer < missileFireDelay) return;
-        if (_inventory.TakeMissiles(1) != 1) return;
+//        if (_inventory.TakeMissiles(1) != 1) return;
+        if (inventory.TakeMissiles(1) != 1) return;
 
         var direction = Vector3ToVector2(transform.right);
-        var missileInstance = missilePrefab.Get<Missile>(transform.position, Quaternion.identity);
+        var missileInstance =
+            missilePrefab.Get<Missile>(transform.position, Quaternion.identity);
         missileInstance.Launch(direction, _rigidBody2D.velocity);
         _missileFireDelayTimer = 0;
     }

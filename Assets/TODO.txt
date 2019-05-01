@@ -1,10 +1,11 @@
-- Enemy state save
 - Fuel
 - Moving lasers
 - Mobile control
 - Rear rotor loss
 - Refine heli collider, separate landing gear
 - better fitting tilemap
++ Save Inventory
++ Enemy state save
 + Ammo
 + Pickup state save
 + Enable lighting on cave sprites

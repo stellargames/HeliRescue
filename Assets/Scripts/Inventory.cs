@@ -1,17 +1,18 @@
 ﻿using System;
 using UnityEngine;
 
-public class Inventory : MonoBehaviour
+[CreateAssetMenu]
+[Serializable]
+public class Inventory : ScriptableObject
 {
     [SerializeField] private int maxMissiles = 100;
-    [SerializeField] private int missiles = 100;
 
-    public static event Action<int> MissileAmountChanged = delegate { };
+    [field: SerializeField] public int MissileAmount { get; private set; } = 100;
 
     public int TakeMissiles(int amount)
     {
         if (amount <= 0) return 0;
-        if (amount > missiles) amount = missiles;
+        if (amount > MissileAmount) amount = MissileAmount;
 
         AdjustMissileAmount(-amount);
         return amount;
@@ -20,7 +21,7 @@ public class Inventory : MonoBehaviour
     public int AddMissiles(int amount)
     {
         if (amount <= 0) return 0;
-        var freeSpace = maxMissiles - missiles;
+        var freeSpace = maxMissiles - MissileAmount;
         if (amount > freeSpace) amount = freeSpace;
 
         AdjustMissileAmount(amount);
@@ -29,7 +30,6 @@ public class Inventory : MonoBehaviour
 
     private void AdjustMissileAmount(int amount)
     {
-        missiles += amount;
-        MissileAmountChanged.Invoke(missiles);
+        MissileAmount += amount;
     }
 }
