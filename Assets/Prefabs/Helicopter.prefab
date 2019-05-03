@@ -336,13 +336,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d13adafd7511da4fa16f5671e47c386, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventory: {fileID: 11400000, guid: 2af910fb182654c4c8b2f4b43695a743, type: 2}
   liftForce: 1000
   missileFireDelay: 0.2
   missilePrefab: {fileID: 3421026640380133216, guid: b245d6446fe8fde4f890bfe413b99fce,
     type: 3}
   moveSpeed: 1000
-  rotateSpeed: 4
-  inventory: {fileID: 11400000, guid: 2af910fb182654c4c8b2f4b43695a743, type: 2}
+  rotateSpeed: 2
 --- !u!114 &7380071079719671974
 MonoBehaviour:
   m_ObjectHideFlags: 0

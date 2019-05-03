@@ -16,14 +16,13 @@ public class HelicopterController : MonoBehaviour, IHaveThrottle
     [SerializeField] private float missileFireDelay = 0.2f;
     [SerializeField] private Missile missilePrefab;
     [SerializeField] private float moveSpeed = 1000f;
-    [SerializeField] private float rotateSpeed = 4f;
+    [SerializeField] private float rotateSpeed = 2f;
 
     public float Throttle => Math.Abs(_throttleForce.x) + _throttleForce.y;
 
     private void Awake()
     {
         _rigidBody2D = GetComponent<Rigidbody2D>();
-//        _inventory = GetComponentInParent<Inventory>();
     }
 
     private void Update()
@@ -44,7 +43,9 @@ public class HelicopterController : MonoBehaviour, IHaveThrottle
     {
         var horizontal = Input.GetAxis("Horizontal");
         var vertical = Input.GetAxis("Vertical");
-        var rotation = Input.GetAxis("Rotation") / 2f;
+        var rotateJoys = Input.GetAxis("RotateJoys");
+        var rotateKeys = Input.GetAxis("RotateKeys");
+        var rotation = Mathf.Clamp(rotateJoys + rotateKeys, -1f, 1f);
 
         var horizontalForce = horizontal * moveSpeed * Time.deltaTime;
         var verticalForce = vertical * liftForce * Time.deltaTime;
@@ -55,7 +56,6 @@ public class HelicopterController : MonoBehaviour, IHaveThrottle
     private void TryFireMissile()
     {
         if (_missileFireDelayTimer < missileFireDelay) return;
-//        if (_inventory.TakeMissiles(1) != 1) return;
         if (inventory.TakeMissiles(1) != 1) return;
 
         var direction = Vector3ToVector2(transform.right);
