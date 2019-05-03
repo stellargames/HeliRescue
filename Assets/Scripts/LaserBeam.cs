@@ -10,7 +10,6 @@ public class LaserBeam : MonoBehaviour
 
     private void Start()
     {
-        beam.SetActive(Application.isEditor);
         if (layerMask == 0) layerMask = LayerMask.GetMask("Default");
     }
 
@@ -37,5 +36,10 @@ public class LaserBeam : MonoBehaviour
     public void SetBeamStatus(bool status)
     {
         beam.SetActive(status);
+    }
+
+    public bool GetBeamStatus()
+    {
+        return beam.activeSelf;
     }
 }
