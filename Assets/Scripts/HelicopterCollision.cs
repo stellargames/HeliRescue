@@ -9,32 +9,20 @@ public class HelicopterCollision : MonoBehaviour
 
     public static event Action Exploded = delegate { };
 
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (IsLandingGearCollision(other) && !IsEnemy(other.gameObject)) return;
+        if (other.CompareTag("Pickup")) return;
 
         var explosion = explosionPrefabs[Random.Range(0, explosionPrefabs.Length)];
         explosion.Get<Explosion>(transform.position, Quaternion.identity);
         PlayExplosionAudio();
 
         GetComponent<HelicopterController>().enabled = false;
-        GetComponent<Collider2D>().enabled = false;
 
         DisableChildren();
         Destroy(gameObject, 2f);
 
         Exploded.Invoke();
-    }
-
-    private static bool IsEnemy(GameObject gameObject)
-    {
-        return gameObject.CompareTag("Enemy");
-    }
-
-    private static bool IsLandingGearCollision(Collision2D other)
-    {
-        var contactNormal = other.GetContact(0).normal;
-        return contactNormal.x <= 0.3f && contactNormal.y >= 0.9f;
     }
 
     private void PlayExplosionAudio()
@@ -49,8 +37,6 @@ public class HelicopterCollision : MonoBehaviour
     private void DisableChildren()
     {
         for (var i = 0; i < transform.childCount; i++)
-        {
             transform.GetChild(i).gameObject.SetActive(false);
-        }
     }
 }

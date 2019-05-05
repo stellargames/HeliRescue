@@ -15,9 +15,9 @@ GameObject:
   - component: {fileID: 6447234485688993382}
   - component: {fileID: 6447234485688993383}
   - component: {fileID: 1803611373928935606}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Missile Pickup
-  m_TagString: Untagged
+  m_TagString: Pickup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -49,10 +49,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0367626cd7ccc624f95b7e0b3fce4318, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickupType: {fileID: 11400000, guid: f3a5f203aaf8bea47ab966c0a5591a5e, type: 2}
   amountAvailable: 3
-  visual: {fileID: 6447234486296260514}
+  pickupType: {fileID: 11400000, guid: f3a5f203aaf8bea47ab966c0a5591a5e, type: 2}
   playMultipleAudio: 1
+  visual: {fileID: 6447234486296260514}
 --- !u!61 &6447234485688993385
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4908,7 +4908,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32ed6e1cc042d414d996398555c1b669, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serializedGuid: 39e6aed375207f46b2cbbe3727816186
+  serializedGuid: 8f6367461708334bbeedce1286ca9350
 --- !u!1 &6447234486198141134
 GameObject:
   m_ObjectHideFlags: 0
@@ -4920,7 +4920,7 @@ GameObject:
   - component: {fileID: 6447234486197984494}
   - component: {fileID: 6447234486195117260}
   - component: {fileID: 6447234486196215308}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Right Missile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4996,7 +4996,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6447234486296260514}
   - component: {fileID: 6447234486296260515}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5050,7 +5050,7 @@ GameObject:
   - component: {fileID: 6447234486684586005}
   - component: {fileID: 6447234486684586007}
   - component: {fileID: 6447234486684586006}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Left Missile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5127,7 +5127,7 @@ GameObject:
   - component: {fileID: 6447234486693673312}
   - component: {fileID: 6447234486693673314}
   - component: {fileID: 6447234486693673313}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Center Missile
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -63,7 +63,8 @@ public class GameManager : MonoBehaviour
     private IEnumerator DelayedRestart()
     {
         yield return new WaitForSeconds(spawnDelay);
-        yield return SceneManager.LoadSceneAsync(0);
+        yield return
+            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
         Start();
     }
 }

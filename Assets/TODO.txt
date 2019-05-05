@@ -1,11 +1,10 @@
-- Fix respawn bugs
 - Fuel
 - Moving lasers
 - Mobile control
 - Rear rotor loss
-- Refine heli collider, separate landing gear
 - better fitting tilemap sprites
 
++ Refine heli collider, separate landing gear
 + Menu
 + Save Inventory
 + Enemy state save
