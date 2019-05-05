@@ -86266,7 +86266,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 425715568}
-  - component: {fileID: 425715567}
   m_Layer: 0
   m_Name: Pickups
   m_TagString: Untagged
@@ -86274,18 +86273,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &425715567
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 425715566}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9cf8988796551f498319dad3ab823b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &425715568
 Transform:
   m_ObjectHideFlags: 0
@@ -87010,7 +86997,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 973399612}
-  - component: {fileID: 973399613}
   m_Layer: 0
   m_Name: Checkpoints
   m_TagString: Untagged
@@ -87035,18 +87021,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &973399613
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 973399611}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9cf8988796551f498319dad3ab823b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1076165713 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8508926373664001743, guid: 6fce541cd98ec914fa632577fc3f2570,
@@ -87109,13 +87083,11 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1086680286}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ba74e519d6b049d488f9d4ed7620092d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventory: {fileID: 0}
-  missileCount: {fileID: 1974774939}
 --- !u!1001 &1093420984
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -87204,7 +87176,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1165867282}
-  - component: {fileID: 1165867283}
   m_Layer: 0
   m_Name: Enemies
   m_TagString: Untagged
@@ -87229,18 +87200,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1165867283
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1165867281}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9cf8988796551f498319dad3ab823b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1179196819
 GameObject:
   m_ObjectHideFlags: 0
@@ -88732,7 +88691,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 563946d3999e5634188dfaac16ed370f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventory: {fileID: 0}
   vehiclePrefab: {fileID: 7380071079719671971, guid: a61824fb15c8f9947a12f94c8ee10267,
     type: 3}
   virtualCamera: {fileID: 1282639566}
@@ -88764,7 +88722,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxMissiles: 100
   items: []
-  itemLimits: 
 --- !u!4 &1900456443 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8508926373664001743, guid: 6fce541cd98ec914fa632577fc3f2570,
@@ -88990,6 +88947,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1974774938}
+  - component: {fileID: 1974774941}
   - component: {fileID: 1974774940}
   - component: {fileID: 1974774939}
   m_Layer: 5
@@ -89139,6 +89097,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1974774937}
   m_CullTransparentMesh: 0
+--- !u!114 &1974774941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1974774937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bae57b9ebd83aa4c8ce84d4c7fc8930, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: f3a5f203aaf8bea47ab966c0a5591a5e, type: 2}
 --- !u!4 &1976623867 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8508926373664001743, guid: 6fce541cd98ec914fa632577fc3f2570,
