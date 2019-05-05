@@ -1,5 +1,4 @@
-- Split off Audioclip and Explosion SOs from HelicopterCollision and MissileController
-- Menu
+- Fix respawn bugs
 - Fuel
 - Moving lasers
 - Mobile control
@@ -7,6 +6,7 @@
 - Refine heli collider, separate landing gear
 - better fitting tilemap sprites
 
++ Menu
 + Save Inventory
 + Enemy state save
 + Ammo

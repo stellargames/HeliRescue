@@ -28,7 +28,6 @@ public class Player : MonoBehaviour
                 ? transform.rotation
                 : _vehicle.transform.rotation;
         }
-        ;
 
         file.Set("playerData", data);
     }

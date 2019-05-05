@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.IO;
 using Persistence;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -49,14 +48,6 @@ public class GameManager : MonoBehaviour
     {
         HelicopterCollision.Exploded -= OnHelicopterExploded;
         Checkpoint.Reached -= CheckpointOnReached;
-    }
-
-    private void Update()
-    {
-        if (Debug && Input.GetKeyUp(KeyCode.X))
-        {
-            File.Delete(Path.Combine(Application.persistentDataPath, "SaveFile.json"));
-        }
     }
 
     private void CheckpointOnReached(Checkpoint checkpoint)

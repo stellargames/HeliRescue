@@ -1,3 +1,10 @@
+<b><size=120%>
+Joris van Eijden    - Lead developer
+https://github.com/stellargames/HeliRescue
+</size></b>
+
+Resources used:
+
 UNITY TECHNOLOGIES  Unity Particle Pack
 https://assetstore.unity.com/packages/essentials/tutorial-projects/unity-particle-pack-127325
 - Missile exhaust
@@ -68,4 +75,15 @@ nioczkus    1911 Reload
 https://freesound.org/people/nioczkus/sounds/396331/
 - Missile reload
     Assets/Audio/396331__nioczkus__1911-reload.aiff
-    
+
+Caco Tavares    Helaman's Warriors
+https://www.1001freefonts.com/helaman-s-warriors.font
+- Main font
+
+???
+https://pxhere.com/en/photo/732269
+- Main menu background
+
+Dieter Steffmann    Due Date
+https://www.1001fonts.com/due-date-font.html
+- Secondary font
