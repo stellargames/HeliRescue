@@ -1,4 +1,5 @@
 ﻿using System;
+using Items;
 using Skytanet.SimpleDatabase;
 using UnityEngine;
 
@@ -21,9 +22,8 @@ namespace Persistence
             var saveFile = new SaveFile(_filename);
 
             LoadPlayer(saveFile);
-
-            var lists = Resources.FindObjectsOfTypeAll<PersistableItemList>();
-            foreach (var itemList in lists) itemList.Load(saveFile);
+            LoadInventory(saveFile);
+            LoadPersistanceComponents(saveFile);
 
             saveFile.Close();
         }
@@ -33,11 +33,36 @@ namespace Persistence
             var saveFile = new SaveFile(_filename);
 
             SavePlayer(saveFile);
-
-            var lists = Resources.FindObjectsOfTypeAll<PersistableItemList>();
-            foreach (var itemList in lists) itemList.Save(saveFile);
+            SaveInventory(saveFile);
+            SavePersistanceComponents(saveFile);
 
             saveFile.Close();
+        }
+
+        private static void SavePersistanceComponents(SaveFile saveFile)
+        {
+            var persistenceComponents =
+                Resources.FindObjectsOfTypeAll<PersistenceComponent>();
+            foreach (var item in persistenceComponents) item.Save(saveFile);
+        }
+
+        private static void LoadPersistanceComponents(SaveFile saveFile)
+        {
+            var persistenceComponents =
+                Resources.FindObjectsOfTypeAll<PersistenceComponent>();
+            foreach (var item in persistenceComponents) item.Load(saveFile);
+        }
+
+        private static void LoadInventory(SaveFile saveFile)
+        {
+            var inventoryItems = Resources.FindObjectsOfTypeAll<InventoryItem>();
+            foreach (var item in inventoryItems) item.Load(saveFile);
+        }
+
+        private static void SaveInventory(SaveFile saveFile)
+        {
+            var inventoryItems = Resources.FindObjectsOfTypeAll<InventoryItem>();
+            foreach (var item in inventoryItems) item.Save(saveFile);
         }
 
         private void LoadPlayer(SaveFile saveFile)

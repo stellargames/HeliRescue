@@ -438,6 +438,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4444667674649096080, guid: 6fce541cd98ec914fa632577fc3f2570,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4431754579298234898, guid: 6fce541cd98ec914fa632577fc3f2570,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -447,11 +452,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.x
       value: 5.303442
-      objectReference: {fileID: 0}
-    - target: {fileID: 4444667674649096080, guid: 6fce541cd98ec914fa632577fc3f2570,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2749360544779286266, guid: 6fce541cd98ec914fa632577fc3f2570,
         type: 3}
@@ -86524,7 +86524,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 789ae5b31dce9a74398156f3dc2d8105, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sequenceType: 0
   intervalSeconds: 3
   laserBeams:
   - {fileID: 7782255}
@@ -86535,6 +86534,7 @@ MonoBehaviour:
   - {fileID: 643400036}
   - {fileID: 546409457}
   modulo: 2
+  sequenceType: 0
 --- !u!4 &546409455 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8508926373664001743, guid: 6fce541cd98ec914fa632577fc3f2570,
@@ -86815,6 +86815,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4444667674649096080, guid: 6fce541cd98ec914fa632577fc3f2570,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4431754579298234898, guid: 6fce541cd98ec914fa632577fc3f2570,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -86824,11 +86829,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.x
       value: 5.4267426
-      objectReference: {fileID: 0}
-    - target: {fileID: 4444667674649096080, guid: 6fce541cd98ec914fa632577fc3f2570,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2749360544779286266, guid: 6fce541cd98ec914fa632577fc3f2570,
         type: 3}
@@ -87114,7 +87114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba74e519d6b049d488f9d4ed7620092d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventory: {fileID: 11400000, guid: 2af910fb182654c4c8b2f4b43695a743, type: 2}
+  inventory: {fileID: 0}
   missileCount: {fileID: 1974774939}
 --- !u!1001 &1093420984
 PrefabInstance:
@@ -87548,7 +87548,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 789ae5b31dce9a74398156f3dc2d8105, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sequenceType: 1
   intervalSeconds: 3
   laserBeams:
   - {fileID: 755004776523575911}
@@ -87557,6 +87556,7 @@ MonoBehaviour:
   - {fileID: 1854731692}
   - {fileID: 1186504176}
   modulo: 2
+  sequenceType: 1
 --- !u!4 &1347377229
 Transform:
   m_ObjectHideFlags: 0
@@ -88712,6 +88712,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1895053195}
   - component: {fileID: 1895053194}
+  - component: {fileID: 1895053196}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -88731,7 +88732,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 563946d3999e5634188dfaac16ed370f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventory: {fileID: 11400000, guid: 2af910fb182654c4c8b2f4b43695a743, type: 2}
+  inventory: {fileID: 0}
   vehiclePrefab: {fileID: 7380071079719671971, guid: a61824fb15c8f9947a12f94c8ee10267,
     type: 3}
   virtualCamera: {fileID: 1282639566}
@@ -88749,6 +88750,21 @@ Transform:
   m_Father: {fileID: 366991867}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1895053196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1895053193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2350d33846844b8448d3b925087cf66e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxMissiles: 100
+  items: []
+  itemLimits: 
 --- !u!4 &1900456443 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8508926373664001743, guid: 6fce541cd98ec914fa632577fc3f2570,
@@ -89257,11 +89273,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 789ae5b31dce9a74398156f3dc2d8105, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sequenceType: 1
   intervalSeconds: 3
   laserBeams:
   - {fileID: 1976623869}
   modulo: 2
+  sequenceType: 1
 --- !u!114 &755004776523575911 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4444667674649096080, guid: 6fce541cd98ec914fa632577fc3f2570,

@@ -1,9 +1,12 @@
+- Split off Audioclip and Explosion SOs from HelicopterCollision and MissileController
+- Menu
 - Fuel
 - Moving lasers
 - Mobile control
 - Rear rotor loss
 - Refine heli collider, separate landing gear
-- better fitting tilemap
+- better fitting tilemap sprites
+
 + Save Inventory
 + Enemy state save
 + Ammo

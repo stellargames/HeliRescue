@@ -49,8 +49,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0367626cd7ccc624f95b7e0b3fce4318, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pickupType: {fileID: 11400000, guid: f3a5f203aaf8bea47ab966c0a5591a5e, type: 2}
   amountAvailable: 3
   visual: {fileID: 6447234486296260514}
+  playMultipleAudio: 1
 --- !u!61 &6447234485688993385
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4906,7 +4908,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32ed6e1cc042d414d996398555c1b669, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serializedGuid: 80e887f221cb364d8f8c0f2410e5bab6
+  serializedGuid: 39e6aed375207f46b2cbbe3727816186
 --- !u!1 &6447234486198141134
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,27 +1,20 @@
-﻿using System;
-using Cinemachine;
-using Persistence;
+﻿using Cinemachine;
 using Skytanet.SimpleDatabase;
 using UnityEngine;
 
-public class Player : MonoBehaviour, IPersist
+public class Player : MonoBehaviour
 {
     private GameObject _vehicle;
-    [SerializeField] private Inventory inventory;
 
     [SerializeField] private GameObject vehiclePrefab;
     [SerializeField] private CinemachineVirtualCamera virtualCamera;
 
-    public Guid Guid => new Guid("563946d3-999e-5634-188d-faac16ed370f");
-
     public void Load(SaveFile file)
     {
-        var data = file.Get<PlayerData>(Guid.ToString());
-        if (data.inventoryJson == null) return;
+        var data = file.Get<PlayerData>("playerData");
 
         transform.position = data.position;
         transform.rotation = data.rotation;
-        JsonUtility.FromJsonOverwrite(data.inventoryJson, inventory);
     }
 
     public void Save(SaveFile file)
@@ -34,11 +27,10 @@ public class Player : MonoBehaviour, IPersist
             data.rotation = _vehicle == null
                 ? transform.rotation
                 : _vehicle.transform.rotation;
-            data.inventoryJson = JsonUtility.ToJson(inventory);
         }
         ;
 
-        file.Set(Guid.ToString(), data);
+        file.Set("playerData", data);
     }
 
     public void SpawnVehicle()

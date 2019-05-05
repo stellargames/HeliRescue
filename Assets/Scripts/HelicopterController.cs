@@ -1,5 +1,6 @@
 ﻿using System;
 using Interfaces;
+using Items;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -10,11 +11,10 @@ public class HelicopterController : MonoBehaviour, IHaveThrottle
     private Rigidbody2D _rigidBody2D;
     private float _rotateForce;
     private Vector2 _throttleForce;
-    [SerializeField] private Inventory inventory;
 
     [SerializeField] private float liftForce = 1000f;
+    [SerializeField] private Missile missile;
     [SerializeField] private float missileFireDelay = 0.2f;
-    [SerializeField] private Missile missilePrefab;
     [SerializeField] private float moveSpeed = 1000f;
     [SerializeField] private float rotateSpeed = 2f;
 
@@ -56,13 +56,15 @@ public class HelicopterController : MonoBehaviour, IHaveThrottle
     private void TryFireMissile()
     {
         if (_missileFireDelayTimer < missileFireDelay) return;
-        if (inventory.TakeMissiles(1) != 1) return;
+        if (missile.amount < 1) return;
 
         var direction = Vector3ToVector2(transform.right);
         var missileInstance =
-            missilePrefab.Get<Missile>(transform.position, Quaternion.identity);
-        missileInstance.Launch(direction, _rigidBody2D.velocity);
+            missile.prefab.Get<MissileController>(transform.position,
+                Quaternion.identity);
+        missileInstance.Launch(direction, _rigidBody2D.velocity, missile);
         _missileFireDelayTimer = 0;
+        missile.amount--;
     }
 
     private void ApplyThrottleToBody()
