@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bd3db38aed880b4caea741e62f1c42e, type: 3}
+  m_Name: GirlKid
+  m_EditorClassIdentifier: 
+  amount: 1
+  maximumAmount: 20
+  audioClips:
+  - {fileID: 8300000, guid: e2b299173e750f24480c8bb9c3d7d68d, type: 3}
+  - {fileID: 8300000, guid: 6685d7e2e356c9c4e82c2f84cb289110, type: 3}
+  - {fileID: 8300000, guid: 3595b01621c771a4c9dc17207a2d1de7, type: 3}
+  - {fileID: 8300000, guid: afc4b85bdb13c724e882ebf91b7b04c8, type: 3}
+  - {fileID: 8300000, guid: e195dd2ff5bdb60489ba4901d7113761, type: 3}

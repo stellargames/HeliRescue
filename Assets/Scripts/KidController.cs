@@ -1,8 +1,8 @@
 ﻿using System;
+using Items;
 using Persistence;
 using Skytanet.SimpleDatabase;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(Collider2D))]
 [RequireComponent(typeof(PersistenceComponent))]
@@ -14,8 +14,8 @@ public class KidController : MonoBehaviour, IPersist
     private bool _rescued;
 
     [SerializeField] private Animator animator;
-    [SerializeField] private AudioClip[] audioClips;
-    [SerializeField] private Transform kid;
+    [SerializeField] private Transform kidBody;
+    [SerializeField] private KidData kidData;
     [SerializeField] private float runSpeed = 5f;
     [SerializeField] private SpriteRenderer spriteRenderer;
 
@@ -40,14 +40,14 @@ public class KidController : MonoBehaviour, IPersist
 
         if (helicopterIsLanded)
         {
-            var distance = helicopter.transform.position.x - kid.position.x;
+            var distance = helicopter.transform.position.x - kidBody.position.x;
             if (Mathf.Abs(distance) < 0.5f)
             {
                 BeRescued();
             }
             else
             {
-                var toTheLeft = helicopter.transform.position.x < kid.position.x;
+                var toTheLeft = helicopter.transform.position.x < kidBody.position.x;
                 MoveTowardsHelicopter(toTheLeft);
             }
         }
@@ -62,11 +62,11 @@ public class KidController : MonoBehaviour, IPersist
 
     private void MoveTowardsHelicopter(bool goingLeft)
     {
-        var position = kid.position;
+        var position = kidBody.position;
         spriteRenderer.flipX = goingLeft;
         var speed = goingLeft ? -runSpeed : runSpeed;
         var positionX = position.x + speed * Time.fixedDeltaTime;
-        kid.position = new Vector2(positionX, position.y);
+        kidBody.position = new Vector2(positionX, position.y);
     }
 
     private void BeRescued()
@@ -75,19 +75,20 @@ public class KidController : MonoBehaviour, IPersist
         PlayRescueAudio();
         animator.SetBool(AnimatorRun, false);
         Destroy(gameObject, 1f);
+        kidData.amount++;
     }
 
     private void Awake()
     {
         _guid = GetComponent<GuidComponent>().GetGuid();
-        _audioSource = GetComponent<AudioSource>();
+        _audioSource = kidBody.GetComponent<AudioSource>();
     }
 
     private void PlayRescueAudio()
     {
-        if (!_audioSource || audioClips.Length == 0) return;
+        if (!_audioSource) return;
         _audioSource.Stop();
 
-        _audioSource.PlayOneShot(audioClips[Random.Range(0, audioClips.Length)]);
+        _audioSource.PlayOneShot(kidData.GetAudioClip());
     }
 }
