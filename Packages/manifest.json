@@ -1,6 +1,8 @@
 {
   "dependencies": {
     "com.cordonez.dependencygraph": "https://github.com/cordonez/DependencyGraph.git",
+    "com.unity.2d.animation": "2.1.0-preview.2",
+    "com.unity.2d.ik": "1.1.0-preview.1",
     "com.unity.cinemachine": "2.3.3",
     "com.unity.collab-proxy": "1.2.16",
     "com.unity.package-manager-ui": "2.1.2",

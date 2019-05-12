@@ -179,7 +179,7 @@ AudioSource:
 --- !u!199 &6447234485688993382
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -4908,7 +4908,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32ed6e1cc042d414d996398555c1b669, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serializedGuid: 8f6367461708334bbeedce1286ca9350
+  serializedGuid: a0c092c97e689148aa07a4237d7ac370
 --- !u!1 &6447234486198141134
 GameObject:
   m_ObjectHideFlags: 0
