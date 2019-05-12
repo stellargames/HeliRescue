@@ -87,3 +87,12 @@ https://pxhere.com/en/photo/732269
 Dieter Steffmann    Due Date
 https://www.1001fonts.com/due-date-font.html
 - Secondary font
+
+Javapimp    Baby's First Game Pack
+https://freesound.org/people/javapimp/packs/24933/
+- Rescued child sounds
+    Assets/Audio/Girl/439073__javapimp__kara-woohoo.ogg
+    Assets/Audio/Girl/439075__javapimp__kara-wee-2.ogg
+    Assets/Audio/Girl/439190__javapimp__kara-yahoo.ogg
+    Assets/Audio/Girl/439191__javapimp__kara-yeehaw-2.ogg
+    Assets/Audio/Girl/439194__javapimp__kara-yippee.ogg
