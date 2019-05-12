@@ -10,34 +10,28 @@ using UnityEngine;
 public class ItemPickup : MonoBehaviour, IPersist
 {
     private AudioSource _audioSource;
+    private Guid _guid;
     private ParticleSystem _particleSystem;
+
     [SerializeField] private int amountAvailable = 3;
-
     [SerializeField] private InventoryItem pickupType;
-
-    [Tooltip(
-        "Enable to make the audio play as many times as the amount of items picked up")]
-    [SerializeField]
-    private bool playMultipleAudio;
-
+    [SerializeField] private bool playMultipleAudio;
     [SerializeField] private Transform visual;
-
-    public Guid Guid { get; private set; }
 
     public void Load(SaveFile file)
     {
-        amountAvailable = file.Get(Guid.ToString(), amountAvailable);
+        amountAvailable = file.Get(_guid.ToString(), amountAvailable);
         gameObject.SetActive(amountAvailable > 0);
     }
 
     public void Save(SaveFile file)
     {
-        file.Set(Guid.ToString(), amountAvailable);
+        file.Set(_guid.ToString(), amountAvailable);
     }
 
     private void Awake()
     {
-        Guid = GetComponent<GuidComponent>().GetGuid();
+        _guid = GetComponent<GuidComponent>().GetGuid();
         _audioSource = GetComponent<AudioSource>();
         _particleSystem = GetComponent<ParticleSystem>();
     }

@@ -1,5 +1,4 @@
-﻿using System;
-using Skytanet.SimpleDatabase;
+﻿using Skytanet.SimpleDatabase;
 using UnityEngine;
 
 namespace Persistence
@@ -16,8 +15,7 @@ namespace Persistence
         public void Save(SaveFile file)
         {
             foreach (var persistableComponent in GetComponents<IPersist>())
-                if (persistableComponent.Guid != Guid.Empty)
-                    persistableComponent.Save(file);
+                persistableComponent.Save(file);
         }
     }
 }

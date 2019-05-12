@@ -13,6 +13,8 @@ public class ChasingEnemy : MonoBehaviour, IPersist
     private AudioSource _audioSource;
     private Transform _currentTarget;
     private Fader _fader;
+    private Guid _guid;
+
     [SerializeField] private Transform body;
     [SerializeField] private float chaseSpeed = 0.05f;
     [SerializeField] private float visualRange = 50f;
@@ -34,21 +36,19 @@ public class ChasingEnemy : MonoBehaviour, IPersist
         }
     }
 
-    public Guid Guid { get; private set; }
-
     public void Load(SaveFile file)
     {
-        Data = file.Get(Guid.ToString(), Data);
+        Data = file.Get(_guid.ToString(), Data);
     }
 
     public void Save(SaveFile file)
     {
-        file.Set(Guid.ToString(), Data);
+        file.Set(_guid.ToString(), Data);
     }
 
     private void Awake()
     {
-        Guid = GetComponent<PersistenceComponent>().GetGuid();
+        _guid = GetComponent<PersistenceComponent>().GetGuid();
         _fader = body.GetComponent<Fader>();
         _audioSource = GetComponent<AudioSource>();
         var radius = GetComponent<CircleCollider2D>().radius;

@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using Items;
 using Skytanet.SimpleDatabase;
 using UnityEngine;
+using static UnityEngine.Object;
 
 namespace Persistence
 {
@@ -9,12 +11,28 @@ namespace Persistence
     public class GameState
     {
         private readonly string _filename;
+        private readonly InventoryItem[] _inventoryItems;
+
+        private readonly Dictionary<Guid, PersistenceComponent> _persistenceComponents;
+
         private readonly Player _player;
 
         public GameState(Player player)
         {
             _filename = "game";
             _player = player;
+            _persistenceComponents = GetPersistenceComponents();
+            _inventoryItems = Resources.FindObjectsOfTypeAll<InventoryItem>();
+        }
+
+        private static Dictionary<Guid, PersistenceComponent> GetPersistenceComponents()
+        {
+            var persistenceComponents = new Dictionary<Guid, PersistenceComponent>();
+            var components = Resources.FindObjectsOfTypeAll<PersistenceComponent>();
+            foreach (var component in components)
+                persistenceComponents[component.GetGuid()] = component;
+
+            return persistenceComponents;
         }
 
         public void Load()
@@ -23,7 +41,7 @@ namespace Persistence
 
             LoadPlayer(saveFile);
             LoadInventory(saveFile);
-            LoadPersistanceComponents(saveFile);
+            LoadPersistenceComponents(saveFile);
 
             saveFile.Close();
         }
@@ -34,35 +52,42 @@ namespace Persistence
 
             SavePlayer(saveFile);
             SaveInventory(saveFile);
-            SavePersistanceComponents(saveFile);
+            SavePersistenceComponents(saveFile);
 
             saveFile.Close();
         }
 
-        private static void SavePersistanceComponents(SaveFile saveFile)
+        private void SavePersistenceComponents(SaveFile saveFile)
         {
-            var persistenceComponents =
-                Resources.FindObjectsOfTypeAll<PersistenceComponent>();
-            foreach (var item in persistenceComponents) item.Save(saveFile);
+            var destroyedItems = new List<Guid>();
+            foreach (var item in _persistenceComponents)
+                if (item.Value == null)
+                    destroyedItems.Add(item.Key);
+                else
+                    item.Value.Save(saveFile);
+
+            saveFile.Set("GameState.destroyedItems", destroyedItems);
         }
 
-        private static void LoadPersistanceComponents(SaveFile saveFile)
+        private void LoadPersistenceComponents(SaveFile saveFile)
         {
-            var persistenceComponents =
-                Resources.FindObjectsOfTypeAll<PersistenceComponent>();
-            foreach (var item in persistenceComponents) item.Load(saveFile);
+            var destroyedItems =
+                saveFile.Get("GameState.destroyedItems", new List<Guid>());
+            foreach (var item in _persistenceComponents)
+                if (destroyedItems.Contains(item.Key))
+                    Destroy(item.Value.gameObject);
+                else
+                    item.Value.Load(saveFile);
         }
 
-        private static void LoadInventory(SaveFile saveFile)
+        private void LoadInventory(SaveFile saveFile)
         {
-            var inventoryItems = Resources.FindObjectsOfTypeAll<InventoryItem>();
-            foreach (var item in inventoryItems) item.Load(saveFile);
+            foreach (var item in _inventoryItems) item.Load(saveFile);
         }
 
-        private static void SaveInventory(SaveFile saveFile)
+        private void SaveInventory(SaveFile saveFile)
         {
-            var inventoryItems = Resources.FindObjectsOfTypeAll<InventoryItem>();
-            foreach (var item in inventoryItems) item.Save(saveFile);
+            foreach (var item in _inventoryItems) item.Save(saveFile);
         }
 
         private void LoadPlayer(SaveFile saveFile)

@@ -34,7 +34,8 @@ public class Player : MonoBehaviour
 
     public void SpawnVehicle()
     {
-        _vehicle = Instantiate(vehiclePrefab, transform);
+        if (_vehicle == null) _vehicle = Instantiate(vehiclePrefab, transform);
+
         virtualCamera.m_Follow = _vehicle.transform;
         virtualCamera.m_LookAt = _vehicle.transform;
     }

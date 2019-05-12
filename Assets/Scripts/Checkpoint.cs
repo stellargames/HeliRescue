@@ -11,30 +11,30 @@ public class Checkpoint : MonoBehaviour, IPersist
     private bool _activated;
     private AudioSource _audioSource;
     private float _blinkTimer;
+    private Guid _guid;
     private float _lastActivated;
     private ParticleSystem _particle;
+
     [SerializeField] private float blinkDelay = 1.5f;
     [SerializeField] private GameObject blinkLight;
     [SerializeField] private float minimumTimeBetweenLandings = 5f;
 
-    public Guid Guid { get; private set; }
-
     public void Load(SaveFile file)
     {
-        _activated = file.Get(Guid.ToString(), false);
+        _activated = file.Get(_guid.ToString(), false);
         if (_activated) _lastActivated = Time.time;
     }
 
     public void Save(SaveFile file)
     {
-        file.Set(Guid.ToString(), _activated);
+        file.Set(_guid.ToString(), _activated);
     }
 
     public static event Action<Checkpoint> Reached = delegate { };
 
     private void Awake()
     {
-        Guid = GetComponent<GuidComponent>().GetGuid();
+        _guid = GetComponent<GuidComponent>().GetGuid();
         _audioSource = GetComponent<AudioSource>();
         _particle = GetComponent<ParticleSystem>();
         blinkLight.SetActive(false);
