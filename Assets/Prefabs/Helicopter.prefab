@@ -231,7 +231,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.26716533, y: 0.0049797}
@@ -424,7 +424,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -7.546133e-11, y: 1.35}
@@ -518,6 +518,7 @@ MonoBehaviour:
   - {fileID: 1174506800577713099, guid: 6e8c7c425e5bc374daf95a774767b1e3, type: 3}
   - {fileID: 4332312331122338369, guid: bd5a7ae3e8bd4c8499f69e8e45138021, type: 3}
   - {fileID: 2581763768408483960, guid: 82019e923dca94848916b96b8f98a352, type: 3}
+  landingGear: {fileID: 3820712458670863563}
 --- !u!50 &7380071079719671972
 Rigidbody2D:
   serializedVersion: 4

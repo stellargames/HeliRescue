@@ -6,12 +6,14 @@ public class HelicopterCollision : MonoBehaviour
 {
     [SerializeField] private AudioClip[] audioClips;
     [SerializeField] private Explosion[] explosionPrefabs;
+    [SerializeField] private Collider2D landingGear;
 
     public static event Action Exploded = delegate { };
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.CompareTag("Pickup")) return;
+        if (other.gameObject.CompareTag("Pickup")) return;
+        if (other.otherCollider == landingGear) return;
 
         var explosion = explosionPrefabs[Random.Range(0, explosionPrefabs.Length)];
         explosion.Get<Explosion>(transform.position, Quaternion.identity);
