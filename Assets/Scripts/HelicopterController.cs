@@ -6,17 +6,20 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class HelicopterController : MonoBehaviour, IHaveThrottle
 {
-//    private Inventory _inventory;
+    private float _landingTimer;
     private float _missileFireDelayTimer;
     private Rigidbody2D _rigidBody2D;
     private float _rotateForce;
     private Vector2 _throttleForce;
+    [SerializeField] private float landingDelay = 1f;
 
     [SerializeField] private float liftForce = 1000f;
     [SerializeField] private Missile missile;
     [SerializeField] private float missileFireDelay = 0.2f;
     [SerializeField] private float moveSpeed = 1000f;
     [SerializeField] private float rotateSpeed = 2f;
+
+    public bool IsLanded => _landingTimer > landingDelay;
 
     public float Throttle => Math.Abs(_throttleForce.x) + _throttleForce.y;
 
@@ -32,6 +35,10 @@ public class HelicopterController : MonoBehaviour, IHaveThrottle
         if (Input.GetButtonDown("Fire1")) TryFireMissile();
 
         _missileFireDelayTimer += Time.deltaTime;
+
+        var moving = Math.Abs(_rotateForce) > 0.2f ||
+                     Math.Abs(_rigidBody2D.velocity.sqrMagnitude) > 0.2f;
+        _landingTimer = moving ? 0 : _landingTimer + Time.deltaTime;
     }
 
     private void FixedUpdate()
