@@ -3,12 +3,10 @@
 /[Oo]bj/
 /[Bb]uild/
 /[Bb]uilds/
+/[Ee]ntityCache/
 
 # Exclude 3rd party libraries installed from the assets store
 [Aa]ssets/Asset Store Resources/
-
-# Some asset tools can't be moved so need to explicitly
-/Assets/TextMesh Pro*
 
 # Exclude rider idea data
 .idea
