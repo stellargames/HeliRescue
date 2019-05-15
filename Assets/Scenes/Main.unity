@@ -573,16 +573,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7bb9acb2cffc5f45abddc238a0ad9b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_PositionIntKeys: []
-  m_PositionIntValues: 
-  m_PositionStringKeys: []
-  m_PositionStringValues: []
-  m_PositionFloatKeys: []
-  m_PositionFloatValues: []
-  m_PositionDoubleKeys: []
-  m_PositionDoubleValues: []
-  m_PositionObjectKeys: []
-  m_PositionObjectValues: []
   m_PositionColorKeys:
   - position: {x: -18, y: -1, z: 0}
     name: Tint
@@ -777,6 +767,16 @@ MonoBehaviour:
   - {r: 1, g: 1, b: 1, a: 1}
   - {r: 1, g: 1, b: 1, a: 1}
   - {r: 1, g: 1, b: 1, a: 1}
+  m_PositionDoubleKeys: []
+  m_PositionDoubleValues: []
+  m_PositionFloatKeys: []
+  m_PositionFloatValues: []
+  m_PositionIntKeys: []
+  m_PositionIntValues: 
+  m_PositionObjectKeys: []
+  m_PositionObjectValues: []
+  m_PositionStringKeys: []
+  m_PositionStringValues: []
 --- !u!114 &367758771
 MonoBehaviour:
   m_ObjectHideFlags: 0
