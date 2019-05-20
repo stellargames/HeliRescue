@@ -1,10 +1,10 @@
 - Mobile control
-- Kids to rescue
 - Fuel
 - Moving lasers
 - Rear rotor loss
 - better fitting tilemap sprites
 
++ Kids to rescue
 + Refine heli collider, separate landing gear
 + Menu
 + Save Inventory

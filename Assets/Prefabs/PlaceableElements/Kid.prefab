@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1610417076145419488}
   - component: {fileID: 1610417076145419501}
   - component: {fileID: 1610417076145419500}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Kid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49,9 +49,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 1610417076253383965}
   kidBody: {fileID: 1610417076253383966}
+  kidData: {fileID: 11400000, guid: 0f063e2177f3efb4cb83e75db86529ba, type: 2}
   runSpeed: 5
   spriteRenderer: {fileID: 1610417076253383964}
-  kidData: {fileID: 11400000, guid: 0f063e2177f3efb4cb83e75db86529ba, type: 2}
 --- !u!61 &1610417076145419488
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -90,7 +90,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32ed6e1cc042d414d996398555c1b669, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serializedGuid: 39bf23d0e91b494d81055c727c90eeee
+  serializedGuid: 28dee009282bc84098a6f3f8a64313a4
 --- !u!114 &1610417076145419500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119,7 +119,7 @@ GameObject:
   - component: {fileID: 1610417076253383964}
   - component: {fileID: 1610417076253383965}
   - component: {fileID: 3052860704520971765}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Stick figure
   m_TagString: Untagged
   m_Icon: {fileID: 0}
