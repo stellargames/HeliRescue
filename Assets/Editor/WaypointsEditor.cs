@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 
 [CustomEditor(typeof(WaypointComponent))]
@@ -18,7 +19,7 @@ public class WaypointsEditor : Editor
     {
         serializedObject.Update();
 
-        GUILayout.Label("Waypoints: " + _waypoints.arraySize);
+        GUILayout.Label("Number of Waypoints: " + _waypoints.arraySize);
         DrawDefaultInspector();
         DrawWaypointAddingButton();
         DrawWaypointRemoveButton();
@@ -56,6 +57,12 @@ public class WaypointsEditor : Editor
             HandleAddingMode(waypoints);
         else
             HandleMoveHandles(waypoints);
+
+        if (GUI.changed && Application.isPlaying == false)
+        {
+            EditorUtility.SetDirty(target);
+            EditorSceneManager.MarkSceneDirty(EditorSceneManager.GetActiveScene());
+        }
     }
 
     private void HandleAddingMode(ICollection<Vector3> waypoints)
@@ -70,6 +77,7 @@ public class WaypointsEditor : Editor
                 if (Event.current.button == 0)
                 {
                     waypoints.Add(GetMousePosition());
+                    GUI.changed = true;
                     Event.current.Use();
                 }
 
