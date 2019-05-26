@@ -33,12 +33,22 @@ public class WaypointFollower : MonoBehaviour
             waypointComponent = GetComponentInParent<WaypointComponent>();
         }
 
+        if (waypointComponent == null) return;
+
         _waypoints = waypointComponent.GetNavigator();
         _waypoints.Select(startAtWaypoint);
         transform.position = _waypoints.Current;
     }
 
     private void Update()
+    {
+        if (_waypoints != null)
+        {
+            MoveToWaypoint();
+        }
+    }
+
+    private void MoveToWaypoint()
     {
         var step = speed * Time.deltaTime;
         transform.position =
