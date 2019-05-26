@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 
-[ExecuteInEditMode]
 [RequireComponent(typeof(LineRenderer))]
 public class ElectricBeam : MonoBehaviour
 {
