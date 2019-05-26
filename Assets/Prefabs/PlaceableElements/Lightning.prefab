@@ -102,7 +102,8 @@ GameObject:
   - component: {fileID: 3718636739435908873}
   - component: {fileID: 3718636739435908875}
   - component: {fileID: 3718636739435908874}
-  m_Layer: 0
+  - component: {fileID: 4388676150033892176}
+  m_Layer: 1
   m_Name: Top Spark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -162,10 +163,10 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 0, y: 0, z: 0}
-  - {x: 0.58226717, y: 1.8714451, z: 0.31855917}
-  - {x: -0.38733843, y: 3.5730214, z: 0.48895264}
-  - {x: 0.63700753, y: 5.977234, z: 0.30356294}
-  - {x: 0.27678427, y: 7.648863, z: 0.49396628}
+  - {x: -0.30500913, y: 2.1379256, z: 0.83069474}
+  - {x: -0.20599107, y: 3.1086602, z: 0.099200994}
+  - {x: 0.0028788343, y: 4.865144, z: 0.6426634}
+  - {x: -0.35306722, y: 7.547875, z: -0.41914952}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 3
@@ -238,6 +239,32 @@ MonoBehaviour:
     m_Bits: 1025
   maximumDistance: 100
   segmentLength: 2
+--- !u!61 &4388676150033892176
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3718636739435908872}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 4}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.5, y: 7.5}
+  m_EdgeRadius: 0
 --- !u!1 &3718636740707658402
 GameObject:
   m_ObjectHideFlags: 0
@@ -263,7 +290,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3718636740707658402}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.63, y: 8.65, z: 1}
+  m_LocalPosition: {x: 6.37, y: 10.07, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3718636739435908873}
@@ -284,7 +311,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96818876d97e7b847abfa1cab799c688, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waypoints: {fileID: 0}
+  waypointComponent: {fileID: 0}
   speed: 20
   startAtWaypoint: 0
   onLastWaypoint: 0
@@ -301,7 +328,8 @@ GameObject:
   - component: {fileID: 3718636741021169277}
   - component: {fileID: 3718636741021169279}
   - component: {fileID: 3718636741021169278}
-  m_Layer: 0
+  - component: {fileID: 8629647347786386206}
+  m_Layer: 1
   m_Name: Bottom Spark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -361,10 +389,11 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 0, y: 0, z: 0}
-  - {x: 0.28456777, y: 1.6224282, z: 0.18643658}
-  - {x: 0.040972654, y: 4.982935, z: 0.27548587}
-  - {x: 0.18767732, y: 7.1744947, z: 0.41515714}
-  - {x: 0.42941418, y: 9.054781, z: 0.19551188}
+  - {x: 0.060416598, y: 1.1627903, z: -0.3879145}
+  - {x: 0.18562408, y: 4.1173024, z: -0.7818171}
+  - {x: 0.4815349, y: 5.5175242, z: -0.6251751}
+  - {x: -0.28039616, y: 6.802999, z: -0.8103488}
+  - {x: 0.7375793, y: 8.63861, z: 0.34434384}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 3
@@ -437,3 +466,29 @@ MonoBehaviour:
     m_Bits: 1025
   maximumDistance: 100
   segmentLength: 2
+--- !u!61 &8629647347786386206
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3718636741021169276}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 4}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.5, y: 7.5}
+  m_EdgeRadius: 0

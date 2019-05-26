@@ -1,13 +1,16 @@
 ﻿using UnityEngine;
 
+[ExecuteInEditMode]
 [RequireComponent(typeof(LineRenderer))]
 public class ElectricBeam : MonoBehaviour
 {
+    private const float TimerTimeOut = 0.05f;
     private readonly RaycastHit2D[] _hits = new RaycastHit2D[1];
 
     private LineRenderer _lineRenderer;
+    private BoxCollider2D _collider;
     private float _timer;
-    private readonly float _timerTimeOut = 0.05f;
+
     [SerializeField] private LayerMask layerMask = 0;
     [SerializeField] private float maximumDistance = 100f;
     [SerializeField] private float segmentLength = 2f;
@@ -15,6 +18,7 @@ public class ElectricBeam : MonoBehaviour
     private void Awake()
     {
         _lineRenderer = GetComponent<LineRenderer>();
+        _collider = GetComponent<BoxCollider2D>();
     }
 
     private void Start()
@@ -22,15 +26,24 @@ public class ElectricBeam : MonoBehaviour
         if (layerMask == 0) layerMask = LayerMask.GetMask("Default");
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        _timer += Time.deltaTime;
-        if (_timer > _timerTimeOut)
+        _timer += Time.fixedDeltaTime;
+        if (_timer > TimerTimeOut)
         {
             _timer = 0;
             var beamLength = GetCollisionDistance();
             SetLineRendererPositions(beamLength);
+            SetColliderShape(beamLength);
         }
+    }
+
+    private void SetColliderShape(float beamLength)
+    {
+        if (!_collider) return;
+
+        _collider.size = new Vector2(_collider.size.x, beamLength);
+        _collider.offset = new Vector2(_collider.offset.x, beamLength * 0.5f);
     }
 
     private float GetCollisionDistance()

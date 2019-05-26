@@ -59,12 +59,12 @@ public class WaypointFollower : MonoBehaviour
     {
         if (!smoothTurns || _waypoints.IsAtEnd || _waypoints.IsAtStart)
         {
-            transform.LookAt(_waypoints.Current);
+            transform.right = _waypoints.Current - transform.position;
             return;
         }
 
         var target = CalculatePositionBetweenCurrentAndNextWaypoint();
-        transform.LookAt(target);
+        transform.right = target - transform.position;
     }
 
     private Vector3 CalculatePositionBetweenCurrentAndNextWaypoint()
