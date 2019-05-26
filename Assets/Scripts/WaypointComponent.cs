@@ -2,11 +2,16 @@
 using UnityEngine;
 
 [ExecuteInEditMode]
-public class WaypointComponent : MonoBehaviour
+public partial class WaypointComponent : MonoBehaviour
 {
     [SerializeField] private List<Vector3> waypoints = new List<Vector3>();
 
     public List<Vector3> Waypoints => waypoints;
+
+    public WaypointNavigator GetNavigator()
+    {
+        return new WaypointNavigator(waypoints);
+    }
 
     private void OnDrawGizmos()
     {
@@ -22,12 +27,11 @@ public class WaypointComponent : MonoBehaviour
 
     private void DrawGizmos()
     {
-        var position = transform.position;
-        foreach (var waypoint in waypoints)
+        if (waypoints.Count == 0) return;
+        for (int i = 0; i < waypoints.Count; i++)
         {
-            Gizmos.DrawLine(position, waypoint);
-            position = waypoint;
-            Gizmos.DrawSphere(position, 0.5f);
+            Gizmos.DrawSphere(waypoints[i], 0.5f);
+            if (i > 0) Gizmos.DrawLine(waypoints[i], waypoints[i - 1]);
         }
     }
 }
