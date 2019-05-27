@@ -96,3 +96,10 @@ https://freesound.org/people/javapimp/packs/24933/
     Assets/Audio/Girl/439190__javapimp__kara-yahoo.ogg
     Assets/Audio/Girl/439191__javapimp__kara-yeehaw-2.ogg
     Assets/Audio/Girl/439194__javapimp__kara-yippee.ogg
+
+Мартин Ангелов  Fast, Easy, Cool - Unity3D electric effect between two points
+https://www.youtube.com/watch?v=Adc616Q1VoY
+- Lightning sprites
+    Assets/Textures/Lightning/blue.png
+    Assets/Textures/Lightning/dark_blue.png
+    Assets/Textures/Lightning/red.png
