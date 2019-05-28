@@ -8,9 +8,12 @@ using UnityEngine.UI;
 public class UIMenu : MonoBehaviour
 {
     private string _path;
+
+#pragma warning disable 0649   // Backing fields are assigned through the Inspector
     [SerializeField] private TextAsset creditsFile;
     [SerializeField] private RectTransform creditsPanel;
     [SerializeField] private Button resetButton;
+#pragma warning restore 0649
 
     private void Start()
     {

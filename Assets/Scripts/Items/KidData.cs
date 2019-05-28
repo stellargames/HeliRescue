@@ -8,7 +8,9 @@ namespace Items
     [CreateAssetMenu(menuName = "Items/Kids", fileName = "KidName.asset")]
     public class KidData : InventoryItem
     {
+#pragma warning disable 0649   // Backing fields are assigned through the Inspector
         [SerializeField] private AudioClip[] audioClips;
+#pragma warning restore 0649
 
         public AudioClip GetAudioClip()
         {

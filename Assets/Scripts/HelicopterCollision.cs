@@ -4,9 +4,11 @@ using Random = UnityEngine.Random;
 
 public class HelicopterCollision : MonoBehaviour
 {
+#pragma warning disable 0649   // Backing fields are assigned through the Inspector
     [SerializeField] private AudioClip[] audioClips;
     [SerializeField] private Explosion[] explosionPrefabs;
     [SerializeField] private Collider2D landingGear;
+#pragma warning restore 0649
 
     public static event Action Exploded = delegate { };
 

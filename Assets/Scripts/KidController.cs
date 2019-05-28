@@ -13,11 +13,13 @@ public class KidController : MonoBehaviour, IPersist
     private Guid _guid;
     private bool _rescued;
 
+#pragma warning disable 0649   // Backing fields are assigned through the Inspector
     [SerializeField] private Animator animator;
     [SerializeField] private Transform kidBody;
     [SerializeField] private KidData kidData;
     [SerializeField] private float runSpeed = 5f;
     [SerializeField] private SpriteRenderer spriteRenderer;
+#pragma warning restore 0649
 
     public void Load(SaveFile file)
     {

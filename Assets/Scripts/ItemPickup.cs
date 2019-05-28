@@ -13,10 +13,12 @@ public class ItemPickup : MonoBehaviour, IPersist
     private Guid _guid;
     private ParticleSystem _particleSystem;
 
+#pragma warning disable 649   // Backing fields are assigned through the Inspector
     [SerializeField] private int amountAvailable = 3;
     [SerializeField] private InventoryItem pickupType;
     [SerializeField] private bool playMultipleAudio;
     [SerializeField] private Transform visual;
+
 
     public void Load(SaveFile file)
     {

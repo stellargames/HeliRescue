@@ -15,9 +15,11 @@ public class ChasingEnemy : MonoBehaviour, IPersist
     private Fader _fader;
     private Guid _guid;
 
+#pragma warning disable 0649   // Backing fields are assigned through the Inspector
     [SerializeField] private Transform body;
     [SerializeField] private float chaseSpeed = 0.05f;
     [SerializeField] private float visualRange = 50f;
+#pragma warning restore 0649
 
     private EnemyData Data
     {

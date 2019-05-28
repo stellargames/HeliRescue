@@ -17,14 +17,15 @@ public class WaypointFollower : MonoBehaviour
     private bool _movingBackward;
     private WaypointNavigator _waypoints;
 
+#pragma warning disable 0649   // Backing fields are assigned through the Inspector
     [SerializeField] private WaypointComponent waypointComponent;
     [SerializeField] private float speed = 5f;
     [SerializeField] private int startAtWaypoint = 0;
     [SerializeField] private EndBehaviour onLastWaypoint;
     [SerializeField] private bool lookAtTarget;
-
     [ConditionalHide("lookAtTarget", true)] [SerializeField]
     private bool smoothTurns;
+#pragma warning restore 0649
 
     private void Awake()
     {

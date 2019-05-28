@@ -9,7 +9,10 @@ namespace Items
     {
         public int amount;
         public int maximumAmount;
+
+#pragma warning disable 0649   // Backing fields are assigned through the Inspector
         [SerializeField] private int startAmount;
+#pragma warning restore 0649
 
         public void Load(SaveFile file)
         {

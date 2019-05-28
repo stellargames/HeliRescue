@@ -11,13 +11,15 @@ public class HelicopterController : MonoBehaviour, IHaveThrottle
     private Rigidbody2D _rigidBody2D;
     private float _rotateForce;
     private Vector2 _throttleForce;
-    [SerializeField] private float landingDelay = 1f;
 
+#pragma warning disable 0649   // Backing fields are assigned through the Inspector
+    [SerializeField] private float landingDelay = 1f;
     [SerializeField] private float liftForce = 1000f;
     [SerializeField] private Missile missile;
     [SerializeField] private float missileFireDelay = 0.2f;
     [SerializeField] private float moveSpeed = 1000f;
     [SerializeField] private float rotateSpeed = 2f;
+#pragma warning restore 0649
 
     public bool IsLanded => _landingTimer > landingDelay;
 

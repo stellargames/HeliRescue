@@ -8,10 +8,12 @@ public class MissileController : PooledMonoBehaviour
     private Missile _missileData;
     private Rigidbody2D _physicsBody;
 
+#pragma warning disable 0649   // Backing fields are assigned through the Inspector
     [SerializeField] private AudioClip[] audioClips;
     [SerializeField] private Transform body;
     [SerializeField] private ParticleSystem exhaust;
     [SerializeField] private Explosion[] explosionPrefabs;
+#pragma warning restore 0649
 
     private void Awake()
     {

@@ -6,9 +6,12 @@ public class LaserBeam : MonoBehaviour
     private const float ScaleFactor = 1f / Mathf.PI;
     private const float PositionAdjustment = -1f / 14f;
     private readonly RaycastHit2D[] _hits = new RaycastHit2D[1];
+
+#pragma warning disable 0649   // Backing fields are assigned through the Inspector
     [SerializeField] private GameObject beam;
     [SerializeField] private LayerMask layerMask = 0;
     [SerializeField] private float maximumDistance = 100f;
+#pragma warning restore 0649
 
     private void Start()
     {

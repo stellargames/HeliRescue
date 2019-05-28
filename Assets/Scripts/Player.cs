@@ -6,8 +6,10 @@ public class Player : MonoBehaviour
 {
     private GameObject _vehicle;
 
+#pragma warning disable 0649   // Backing fields are assigned through the Inspector
     [SerializeField] private GameObject vehiclePrefab;
     [SerializeField] private CinemachineVirtualCamera virtualCamera;
+#pragma warning restore 0649
 
     public void Load(SaveFile file)
     {

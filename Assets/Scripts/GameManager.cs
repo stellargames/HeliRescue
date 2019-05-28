@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using Persistence;
+﻿using Persistence;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.SceneManagement;
@@ -57,14 +56,12 @@ public class GameManager : MonoBehaviour
 
     private void OnHelicopterExploded()
     {
-        StartCoroutine(DelayedRestart());
+        Invoke(nameof(Restart), spawnDelay);
     }
 
-    private IEnumerator DelayedRestart()
+    private void Restart()
     {
-        yield return new WaitForSeconds(spawnDelay);
-        yield return
-            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         Start();
     }
 }

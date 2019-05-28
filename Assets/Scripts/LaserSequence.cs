@@ -6,11 +6,13 @@ public class LaserSequence : MonoBehaviour
 {
     private int _currentIndex;
     private float _currentTime;
+
+#pragma warning disable 0649   // Backing fields are assigned through the Inspector
     [SerializeField] private float intervalSeconds = 3f;
     [SerializeField] private LaserBeam[] laserBeams;
     [SerializeField] private int modulo = 2;
-
     [SerializeField] private SequenceType sequenceType;
+#pragma warning restore 0649
 
     private void Start()
     {

@@ -15,9 +15,11 @@ public class Checkpoint : MonoBehaviour, IPersist
     private float _lastActivated;
     private ParticleSystem _particle;
 
+#pragma warning disable 0649   // Backing fields are assigned through the Inspector
     [SerializeField] private float blinkDelay = 1.5f;
     [SerializeField] private GameObject blinkLight;
     [SerializeField] private float minimumTimeBetweenLandings = 5f;
+#pragma warning restore 0649
 
     public void Load(SaveFile file)
     {
