@@ -44,7 +44,12 @@ https://assetstore.unity.com/packages/3d/characters/dungeon-escape-119390
 Unity-Technologies  2d-extras
 https://github.com/Unity-Technologies/2d-extras
 - Tilemap plugin
-    Assets/Plugins/Tilemap/*
+    Assets/Plugins/2d-extras/*
+
+Unity-Technologies  Standard Assets
+https://assetstore.unity.com/packages/essentials/asset-packs/standard-assets-32351
+- Cross Platform Input
+    Assets/Plugins/CrossPlatformInput/*
 
 DUANE'S MIND    Military Helicopter II
 https://assetstore.unity.com/packages/3d/vehicles/air/military-helicopter-ii-9472
@@ -103,3 +108,14 @@ https://www.youtube.com/watch?v=Adc616Q1VoY
     Assets/Textures/Lightning/blue.png
     Assets/Textures/Lightning/dark_blue.png
     Assets/Textures/Lightning/red.png
+
+Fenerax Studios Joystick Pack
+https://assetstore.unity.com/packages/tools/input-management/joystick-pack-107631
+- Some parts of the code were used for the mobile controls.
+
+Leo Luz Tools BR    Virtual Plug and Play Joystick
+https://assetstore.unity.com/packages/tools/input-management/virtual-plug-and-play-joystick-114288
+- Joystick sprites
+    Assets/Plugins/CrossPlatformInput/Sprites/Knob2.png
+    Assets/Plugins/CrossPlatformInput/Sprites/knobBackground2.png
+
