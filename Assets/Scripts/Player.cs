@@ -40,5 +40,14 @@ public class Player : MonoBehaviour
 
         virtualCamera.m_Follow = _vehicle.transform;
         virtualCamera.m_LookAt = _vehicle.transform;
+        if (Application.isMobilePlatform)
+        {
+            var framingTransposer =
+                virtualCamera.GetCinemachineComponent<CinemachineFramingTransposer>();
+            if (framingTransposer != null)
+            {
+                framingTransposer.m_CameraDistance = 80;
+            }
+        }
     }
 }

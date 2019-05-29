@@ -1,9 +1,20 @@
-- Mobile control
+Features:
 - Fuel
-- Moving lasers
+- Destructable walls
 - Rear rotor loss
-- better fitting tilemap sprites
 
+Improvements:
+- better fitting tilemap sprites
+- Replace skull fader and blinking light with animations
+- sprite tiles lighting (https://github.com/traggett/UnitySpriteShaders)
+- sound levels (reload, kid rescue too loud)
+
+Bugs:
+- Landing gear skull touch should be lethal
+
+Done:
++ Mobile control
++ Moving lasers
 + Kids to rescue
 + Refine heli collider, separate landing gear
 + Menu

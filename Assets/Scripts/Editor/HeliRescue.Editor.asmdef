@@ -1,0 +1,19 @@
+{
+    "name": "HeliRescue.Editor",
+    "references": [
+        "GUID:2c1aa9cb76bb4734b94dfe10f0f5739c"
+    ],
+    "optionalUnityReferences": [
+        "TestAssemblies"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": []
+}
