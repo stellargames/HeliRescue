@@ -4,7 +4,7 @@
 [RequireComponent(typeof(LineRenderer))]
 public class ElectricBeam : MonoBehaviour
 {
-    private const float TimerTimeOut = 0.05f;
+    private const float TimerTimeOut = 0.1f;
     private readonly RaycastHit2D[] _hits = new RaycastHit2D[1];
 
     private LineRenderer _lineRenderer;
@@ -26,9 +26,9 @@ public class ElectricBeam : MonoBehaviour
         if (layerMask == 0) layerMask = LayerMask.GetMask("Default");
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
-        _timer += Time.fixedDeltaTime;
+        _timer += Time.deltaTime;
         if (_timer > TimerTimeOut)
         {
             _timer = 0;

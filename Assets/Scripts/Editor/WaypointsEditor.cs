@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
-#if UNITY_EDITOR
-using System.Linq;
 
 [CustomEditor(typeof(WaypointComponent))]
 public class WaypointsEditor : Editor
@@ -127,4 +126,3 @@ public class WaypointsEditor : Editor
         return mousePosition;
     }
 }
-#endif

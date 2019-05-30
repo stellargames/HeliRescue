@@ -15,7 +15,8 @@ public class HelicopterCollision : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Pickup")) return;
-        if (other.otherCollider == landingGear) return;
+        if (other.otherCollider == landingGear &&
+            !other.gameObject.CompareTag("Enemy")) return;
 
         var explosion = explosionPrefabs[Random.Range(0, explosionPrefabs.Length)];
         explosion.Get<Explosion>(transform.position, Quaternion.identity);

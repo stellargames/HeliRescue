@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4896131023591454869}
   m_Layer: 0
   m_Name: Skull Body
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -306,4 +306,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32ed6e1cc042d414d996398555c1b669, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serializedGuid: 66afe0976894f44e923d45108c1e8721
+  serializedGuid: 1789852709e22347b6661c159136ea06

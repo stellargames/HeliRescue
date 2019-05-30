@@ -3,6 +3,7 @@
     "com.cordonez.dependencygraph": "https://github.com/cordonez/DependencyGraph.git",
     "com.unity.cinemachine": "2.3.3",
     "com.unity.package-manager-ui": "2.1.2",
+    "com.unity.postprocessing": "2.1.6",
     "com.unity.textmeshpro": "2.0.1",
     "com.unity.timeline": "1.0.0",
     "com.unity.modules.ai": "1.0.0",
