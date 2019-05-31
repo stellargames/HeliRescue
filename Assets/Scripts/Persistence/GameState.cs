@@ -30,7 +30,13 @@ namespace Persistence
             var persistenceComponents = new Dictionary<Guid, PersistenceComponent>();
             var components = Resources.FindObjectsOfTypeAll<PersistenceComponent>();
             foreach (var component in components)
-                persistenceComponents[component.GetGuid()] = component;
+            {
+                var guid = component.GetGuid();
+                if (guid != Guid.Empty)
+                {
+                    persistenceComponents[guid] = component;
+                }
+            }
 
             return persistenceComponents;
         }

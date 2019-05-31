@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     private GameState _gameData;
     private int _loadedLevelBuildIndex;
     private Player _player;
+    private bool _alive = true;
 
     [SerializeField] private float spawnDelay = 3f;
 
@@ -35,6 +36,7 @@ public class GameManager : MonoBehaviour
         _gameData = new GameState(_player);
         _gameData.Load();
         _player.SpawnVehicle();
+        _alive = true;
     }
 
     private void OnEnable()
@@ -51,11 +53,12 @@ public class GameManager : MonoBehaviour
 
     private void CheckpointOnReached(Checkpoint checkpoint)
     {
-        _gameData.Save();
+        if (_alive) _gameData.Save();
     }
 
     private void OnHelicopterExploded()
     {
+        _alive = false;
         Invoke(nameof(Restart), spawnDelay);
     }
 
