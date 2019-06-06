@@ -98,7 +98,10 @@ namespace Persistence
 
         private void LoadPlayer(SaveFile saveFile)
         {
-            _player.Load(saveFile);
+            if (saveFile.HasKey("playerData"))
+            {
+                _player.Load(saveFile);
+            }
         }
 
         private void SavePlayer(SaveFile saveFile)

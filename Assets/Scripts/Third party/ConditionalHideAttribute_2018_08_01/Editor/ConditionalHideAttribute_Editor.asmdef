@@ -1,0 +1,19 @@
+{
+    "name": "ConditionalHideAttribute_Editor",
+    "references": [
+        "GUID:9b21a09d2dcb3574ab4be5f73bddd54a"
+    ],
+    "optionalUnityReferences": [
+        "TestAssemblies"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": []
+}

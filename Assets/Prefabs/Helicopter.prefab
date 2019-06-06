@@ -500,7 +500,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aaf42efc1c61edf44b9051a96ca22e61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pitchMultiplier: 0.001
+  pitchMultiplier: 0.003
 --- !u!114 &7380071079719672025
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -697,8 +697,8 @@ Light:
   serializedVersion: 9
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 113
-  m_Range: 36
+  m_Intensity: 15
+  m_Range: 50
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -734,7 +734,7 @@ Light:
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 3639
+    m_Bits: 4294967295
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0

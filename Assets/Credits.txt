@@ -119,3 +119,13 @@ https://assetstore.unity.com/packages/tools/input-management/virtual-plug-and-pl
     Assets/Plugins/CrossPlatformInput/Sprites/Knob2.png
     Assets/Plugins/CrossPlatformInput/Sprites/knobBackground2.png
 
+OpenClipart-Vectors Rocket Missile Lift-Off Start Fire
+https://pixabay.com/vectors/rocket-missile-lift-off-start-fire-146104/
+- UI missile icon
+    Assets/Sprites/Icon_Missile.png
+
+Clker-Free-Vector-Images    Girl Yellow Hair
+https://pixabay.com/vectors/girl-yellow-hair-blond-woman-303780/
+- UI kid icon
+    Assets/Sprites/Icon_Girl.png
+

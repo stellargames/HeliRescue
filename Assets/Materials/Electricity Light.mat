@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Electricity Light
   m_Shader: {fileID: 4800000, guid: ac2f92f6b286eea439e509d2343487ea, type: 3}
-  m_ShaderKeywords: _ADDITIVEBLEND
+  m_ShaderKeywords: ETC1_EXTERNAL_ALPHA _ADDITIVEBLEND
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
