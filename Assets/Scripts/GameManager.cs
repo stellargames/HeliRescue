@@ -1,6 +1,5 @@
 ﻿using Persistence;
 using UnityEngine;
-using UnityEngine.Assertions;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -17,7 +16,6 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        Assert.raiseExceptions = true;
         if (Instance != null)
         {
             Destroy(gameObject);

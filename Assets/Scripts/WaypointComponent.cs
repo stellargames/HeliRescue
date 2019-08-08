@@ -2,7 +2,7 @@
 using UnityEngine;
 
 [ExecuteInEditMode]
-public partial class WaypointComponent : MonoBehaviour
+public class WaypointComponent : MonoBehaviour
 {
     [SerializeField] private List<Vector3> waypoints = new List<Vector3>();
 
