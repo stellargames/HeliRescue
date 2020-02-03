@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba2f1d2f253e4b7ca57f30a1e42eb628, type: 3}
   m_Name: NormalMissile
   m_EditorClassIdentifier: 
-  amount: 96
+  amount: 3
   maximumAmount: 100
   startAmount: 3
   prefab: {fileID: 3421026640380133216, guid: b245d6446fe8fde4f890bfe413b99fce, type: 3}
