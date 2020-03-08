@@ -51,7 +51,7 @@ public class WaypointFollower : MonoBehaviour
 
     private void MoveToWaypoint()
     {
-        var step = speed * Time.deltaTime;
+        float step = speed * Time.deltaTime;
         transform.position =
             Vector3.MoveTowards(transform.position, _waypoints.Current, step);
 
@@ -68,40 +68,46 @@ public class WaypointFollower : MonoBehaviour
 
     private void LookAtTarget()
     {
-        if (!smoothTurns || _waypoints.IsAtEnd || _waypoints.IsAtStart)
+        if (_waypoints.IsAtEnd || _waypoints.IsAtStart) return;
+
+        Vector3 direction;
+        if (smoothTurns)
         {
-            transform.right = _waypoints.Current - transform.position;
-            return;
+            Vector3 target = CalculatePositionBetweenCurrentAndNextWaypoint();
+            direction = target - transform.position;
+        }
+        else
+        {
+            direction = _waypoints.Current - transform.position;
         }
 
-        var target = CalculatePositionBetweenCurrentAndNextWaypoint();
-        transform.right = target - transform.position;
+        transform.right = _movingBackward ? -direction : direction;
     }
 
     private Vector3 CalculatePositionBetweenCurrentAndNextWaypoint()
     {
-        var progress = CalculateProgressOnCurrentSegment();
-        var next = _movingBackward
+        float progress = CalculateProgressOnCurrentSegment();
+        Vector3 next = _movingBackward
             ? _waypoints.PeekPrevious()
             : _waypoints.PeekNext();
-        var target = Vector3.Lerp(_waypoints.Current, next, progress);
+        Vector3 target = Vector3.Lerp(_waypoints.Current, next, progress);
         return target;
     }
 
     private float CalculateProgressOnCurrentSegment()
     {
-        var previous = _movingBackward
+        Vector3 previous = _movingBackward
             ? _waypoints.PeekNext()
             : _waypoints.PeekPrevious();
-        var currentSegmentLength = Vector3.Distance(previous, _waypoints.Current);
-        var distanceTraveled = Vector3.Distance(previous, transform.position);
-        var progress = distanceTraveled / currentSegmentLength;
+        float currentSegmentLength = Vector3.Distance(previous, _waypoints.Current);
+        float distanceTraveled = Vector3.Distance(previous, transform.position);
+        float progress = distanceTraveled / currentSegmentLength;
         return progress;
     }
 
     private void NextWaypoint()
     {
-        var moreWaypointsAvailable = _waypoints.Move(_movingBackward);
+        bool moreWaypointsAvailable = _waypoints.Move(_movingBackward);
         if (moreWaypointsAvailable) return;
 
         switch (onLastWaypoint)
