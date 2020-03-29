@@ -1,5 +1,5 @@
 # Heli Rescue
-Demo project for Unity game development.
+Open source project for Unity game development.
 
 A 2D game about flying a helicopter in a cave system and rescuing lost kids.
 
@@ -12,6 +12,6 @@ Inspired by:
 - [Eindeloos (1985)](https://www.youtube.com/watch?v=DY0Uyg7Dttg)
 
 Contact me when:
-- You can improve the graphics or sounds for free.
+- You can improve the graphics, sounds or animations.
 - You want to build out the cave system and fill it with enemies, traps, checkpoints, kids to rescue, etc.
 - You'd like me to work on your game project.
