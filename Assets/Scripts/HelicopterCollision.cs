@@ -12,11 +12,16 @@ public class HelicopterCollision : MonoBehaviour
 
     public static event Action Exploded = delegate { };
 
+    private bool _colliding;
+
     private void OnCollisionEnter2D(Collision2D other)
     {
+        if (_colliding) return;
         if (other.gameObject.CompareTag("Pickup")) return;
         if (other.otherCollider == landingGear &&
             !other.gameObject.CompareTag("Enemy")) return;
+
+        _colliding = true;
 
         var explosion = explosionPrefabs[Random.Range(0, explosionPrefabs.Length)];
         explosion.Get<Explosion>(transform.position, Quaternion.identity);

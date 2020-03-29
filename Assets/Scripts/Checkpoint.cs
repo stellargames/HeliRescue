@@ -40,6 +40,7 @@ public class Checkpoint : MonoBehaviour, IPersist
         _audioSource = GetComponent<AudioSource>();
         _particle = GetComponent<ParticleSystem>();
         blinkLight.SetActive(false);
+        _lastActivated = Time.time - minimumTimeBetweenLandings;
     }
 
     private void Update()
@@ -58,11 +59,6 @@ public class Checkpoint : MonoBehaviour, IPersist
     {
         if (!other.gameObject.CompareTag("Player")) return;
         Activate();
-    }
-
-    private void OnCollisionExit2D(Collision2D other)
-    {
-        if (!other.gameObject.CompareTag("Player")) return;
         _lastActivated = Time.time;
     }
 

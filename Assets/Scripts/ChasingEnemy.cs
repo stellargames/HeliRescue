@@ -14,6 +14,7 @@ public class ChasingEnemy : MonoBehaviour, IPersist
     private Transform _currentTarget;
     private Fader _fader;
     private Guid _guid;
+    private bool _colliding;
 
 #pragma warning disable 0649   // Backing fields are assigned through the Inspector
     [SerializeField] private Transform body;
@@ -87,6 +88,8 @@ public class ChasingEnemy : MonoBehaviour, IPersist
 
     private void OnCollisionEnter2D(Collision2D other)
     {
+        if (_colliding) return;
+        _colliding = true;
         if (_activated) StartCoroutine(Die());
     }
 

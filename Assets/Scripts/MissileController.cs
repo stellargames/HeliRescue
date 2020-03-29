@@ -7,6 +7,7 @@ public class MissileController : PooledMonoBehaviour
 {
     private Missile _missileData;
     private Rigidbody2D _physicsBody;
+    private bool _colliding;
 
 #pragma warning disable 0649   // Backing fields are assigned through the Inspector
     [SerializeField] private AudioClip[] audioClips;
@@ -35,6 +36,8 @@ public class MissileController : PooledMonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
+        if (_colliding) return;
+        _colliding = true;
         var contact = other.GetContact(0);
 
         InstantiateExplosionPrefab(contact);
