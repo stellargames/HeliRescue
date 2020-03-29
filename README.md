@@ -5,6 +5,8 @@ A 2D game about flying a helicopter in a cave system and rescuing lost kids.
 
 ![screenshot](screenshot.png)
 
+Demo at [Simmer.io](https://simmer.io/@JvE/heli-rescue)
+
 Inspired by:
 
 - [Choplifter (1982)](https://www.youtube.com/watch?v=wCrKd0fM1CY)
