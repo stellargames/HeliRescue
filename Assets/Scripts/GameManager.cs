@@ -1,4 +1,5 @@
-﻿using Persistence;
+﻿using System.Collections;
+using Persistence;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -56,13 +57,18 @@ public class GameManager : MonoBehaviour
 
     private void OnHelicopterExploded()
     {
+        if (!_alive) return;
         _alive = false;
-        Invoke(nameof(Restart), spawnDelay);
+        StartCoroutine(Restart());
     }
 
-    private void Restart()
+    private IEnumerator Restart()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        // Wait for explosions to finish before restarting.
+        yield return new WaitForSeconds(spawnDelay);
+        // Re-load the current scene.
+        yield return SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+        // Start a new game.
         Start();
     }
 }
