@@ -41,7 +41,7 @@ public class WaypointFollower : MonoBehaviour
         transform.position = _waypoints.Current;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (_waypoints != null)
         {
@@ -51,9 +51,12 @@ public class WaypointFollower : MonoBehaviour
 
     private void MoveToWaypoint()
     {
-        float step = speed * Time.deltaTime;
-        transform.position =
-            Vector3.MoveTowards(transform.position, _waypoints.Current, step);
+        float maxDistanceDelta = speed * Time.deltaTime;
+        transform.position = Vector3.MoveTowards(
+            transform.position,
+            _waypoints.Current,
+            maxDistanceDelta
+        );
 
         if (Vector3.Distance(transform.position, _waypoints.Current) < Precision)
         {

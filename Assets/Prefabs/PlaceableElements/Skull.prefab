@@ -203,7 +203,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   body: {fileID: 4896131023591454867}
-  chaseSpeed: 0.05
+  chaseSpeed: 5
   visualRange: 50
 --- !u!58 &4896131023987964784
 CircleCollider2D:

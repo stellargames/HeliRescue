@@ -18,7 +18,7 @@ public class ChasingEnemy : MonoBehaviour, IPersist
 
 #pragma warning disable 0649   // Backing fields are assigned through the Inspector
     [SerializeField] private Transform body;
-    [SerializeField] private float chaseSpeed = 0.05f;
+    [SerializeField] private float chaseSpeed = 5f;
     [SerializeField] private float visualRange = 50f;
 #pragma warning restore 0649
 
@@ -54,7 +54,7 @@ public class ChasingEnemy : MonoBehaviour, IPersist
         _guid = GetComponent<PersistenceComponent>().GetGuid();
         _fader = body.GetComponent<Fader>();
         _audioSource = GetComponent<AudioSource>();
-        var radius = GetComponent<CircleCollider2D>().radius;
+        float radius = GetComponent<CircleCollider2D>().radius;
         if (visualRange <= radius)
         {
             Debug.LogWarning(
@@ -63,7 +63,7 @@ public class ChasingEnemy : MonoBehaviour, IPersist
         }
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (!_activated) return;
 
@@ -95,19 +95,23 @@ public class ChasingEnemy : MonoBehaviour, IPersist
 
     private void FollowCurrentTarget()
     {
-        if (TargetInRange())
-            transform.position =
-                Vector3.MoveTowards(transform.position, _currentTarget.position,
-                    chaseSpeed);
+        if (!TargetInRange()) return;
+
+        float maxDistanceDelta = chaseSpeed * Time.deltaTime;
+        transform.position = Vector3.MoveTowards(
+            transform.position,
+            _currentTarget.position,
+            maxDistanceDelta
+        );
     }
 
     private bool AcquireTarget()
     {
-        var contactFilter2D = new ContactFilter2D().NoFilter();
+        ContactFilter2D contactFilter2D = new ContactFilter2D().NoFilter();
         var collider2Ds = new List<Collider2D>();
         Physics2D.OverlapCircle(transform.position, visualRange, contactFilter2D,
             collider2Ds);
-        foreach (var other in collider2Ds)
+        foreach (Collider2D other in collider2Ds)
         {
             if (!IsPlayer(other)) continue;
             _currentTarget = other.transform;
@@ -124,7 +128,7 @@ public class ChasingEnemy : MonoBehaviour, IPersist
 
     private bool TargetInRange()
     {
-        var distance = Vector3.Distance(transform.position, _currentTarget.position);
+        float distance = Vector3.Distance(transform.position, _currentTarget.position);
         return distance < visualRange;
     }
 
