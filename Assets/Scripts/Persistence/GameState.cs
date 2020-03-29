@@ -12,9 +12,7 @@ namespace Persistence
     {
         private readonly string _filename;
         private readonly InventoryItem[] _inventoryItems;
-
         private readonly Dictionary<Guid, PersistenceComponent> _persistenceComponents;
-
         private readonly Player _player;
 
         public GameState(Player player)
@@ -29,9 +27,9 @@ namespace Persistence
         {
             var persistenceComponents = new Dictionary<Guid, PersistenceComponent>();
             var components = Resources.FindObjectsOfTypeAll<PersistenceComponent>();
-            foreach (var component in components)
+            foreach (PersistenceComponent component in components)
             {
-                var guid = component.GetGuid();
+                Guid guid = component.GetGuid();
                 if (guid != Guid.Empty)
                 {
                     persistenceComponents[guid] = component;
@@ -88,12 +86,14 @@ namespace Persistence
 
         private void LoadInventory(SaveFile saveFile)
         {
-            foreach (var item in _inventoryItems) item.Load(saveFile);
+            foreach (InventoryItem item in _inventoryItems)
+                item.Load(saveFile);
         }
 
         private void SaveInventory(SaveFile saveFile)
         {
-            foreach (var item in _inventoryItems) item.Save(saveFile);
+            foreach (InventoryItem item in _inventoryItems)
+                item.Save(saveFile);
         }
 
         private void LoadPlayer(SaveFile saveFile)

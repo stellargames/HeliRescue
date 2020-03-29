@@ -8,13 +8,13 @@ namespace Persistence
     {
         public void Load(SaveFile file)
         {
-            foreach (var persistableComponent in GetComponents<IPersist>())
+            foreach (IPersist persistableComponent in GetComponents<IPersist>())
                 persistableComponent.Load(file);
         }
 
         public void Save(SaveFile file)
         {
-            foreach (var persistableComponent in GetComponents<IPersist>())
+            foreach (IPersist persistableComponent in GetComponents<IPersist>())
                 persistableComponent.Save(file);
         }
     }
